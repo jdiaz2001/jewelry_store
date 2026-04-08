@@ -44,9 +44,9 @@ E0046,Broquel cruz,$13
 E0047,Broquel Angel,$13 
 E0049,Broquel flor Azul larga,$14 
 E0051,Huggie Mini Estrella de Mar,$20 
-E0053,Dije Niño,$19 
-E0054,Dije Colibri,$40
-E0056,Dije Niña,$19
-E0057,Anillo Solitario,$29
-E0058,Anillo Abrazo,$40
-E0059,Anillo Medallita,$29
+P0001,Dije Niño,$19 
+P0002,Dije Colibri,$40
+P0003,Dije Niña,$19
+R0001,Anillo Solitario,$29
+R0002,Anillo Abrazo,$40
+R0003,Anillo Medallita,$29
