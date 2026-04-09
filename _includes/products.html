@@ -1,5 +1,5 @@
 <section id="catalog" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-  <h2 class="text-3xl font-bold text-center text-gray-800 mb-10">Catálogo de Productos</h2>
+  <h2 class="text-3xl font-bold text-center text-gray-800 mb-10" data-i18n="catalog_title">Catálogo de Productos</h2>
 
   <div class="flex flex-col md:flex-row gap-8">
 
@@ -12,7 +12,7 @@
     <!-- Sidebar filters -->
     <aside class="w-full md:w-56 shrink-0">
       <div class="bg-white rounded-2xl shadow-md p-5 sticky top-20">
-        <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wider mb-4">Filtrar por tipo</h3>
+        <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wider mb-4" data-i18n="filter_title">Filtrar por tipo</h3>
         <ul class="space-y-2">
           <li>
             <button
@@ -20,7 +20,7 @@
               data-category="todos"
               aria-pressed="true"
             >
-              Todos <span class="text-xs opacity-70">({{ total }})</span>
+              <span data-i18n="filter_all">Todos</span> <span class="text-xs opacity-70">({{ total }})</span>
             </button>
           </li>
           <li>
@@ -29,7 +29,7 @@
               data-category="aretes"
               aria-pressed="false"
             >
-              Aretes <span class="text-xs opacity-70">({{ aretes_count }})</span>
+              <span data-i18n="filter_earrings">Aretes</span> <span class="text-xs opacity-70">({{ aretes_count }})</span>
             </button>
           </li>
           <li>
@@ -38,7 +38,7 @@
               data-category="dijes"
               aria-pressed="false"
             >
-              Dijes <span class="text-xs opacity-70">({{ dijes_count }})</span>
+              <span data-i18n="filter_pendants">Dijes</span> <span class="text-xs opacity-70">({{ dijes_count }})</span>
             </button>
           </li>
           <li>
@@ -47,40 +47,49 @@
               data-category="anillos"
               aria-pressed="false"
             >
-              Anillos <span class="text-xs opacity-70">({{ anillos_count }})</span>
+              <span data-i18n="filter_rings">Anillos</span> <span class="text-xs opacity-70">({{ anillos_count }})</span>
             </button>
           </li>
         </ul>
 
         <!-- Price filter -->
-        <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wider mt-6 mb-3">Precio</h3>
+        <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wider mt-6 mb-3" data-i18n="price_title">Precio</h3>
         <div class="flex items-center gap-2">
           <input id="price-min" type="number" min="0" placeholder="Min" class="w-full border border-gray-300 rounded-lg px-2 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-rose-400" />
           <span class="text-gray-400 text-sm">–</span>
           <input id="price-max" type="number" min="0" placeholder="Max" class="w-full border border-gray-300 rounded-lg px-2 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-rose-400" />
         </div>
-        <button id="price-filter-btn" class="mt-3 w-full bg-rose-600 text-white text-sm font-medium py-2 rounded-lg hover:bg-rose-700 transition-colors">
+        <button id="price-filter-btn" class="mt-3 w-full bg-rose-600 text-white text-sm font-medium py-2 rounded-lg hover:bg-rose-700 transition-colors" data-i18n="price_filter">
           Filtrar
         </button>
-        <button id="price-clear-btn" class="mt-1 w-full text-xs text-gray-400 hover:text-gray-600 transition-colors">
+        <button id="price-clear-btn" class="mt-1 w-full text-xs text-gray-400 hover:text-gray-600 transition-colors" data-i18n="price_clear">
           Limpiar precio
         </button>
       </div>
     </aside>
 
-    <!-- Search + Product grid -->
+    <!-- Search + Sort + Product grid -->
     <div class="flex-1">
-      <div class="mb-6 relative">
-        <input
-          id="search-input"
-          type="text"
-          placeholder="Buscar productos..."
-          class="w-full border border-gray-300 rounded-xl px-4 py-2.5 pl-10 text-sm focus:outline-none focus:ring-2 focus:ring-rose-400 bg-white"
-          aria-label="Buscar productos"
-        />
-        <svg class="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <div class="mb-6 flex flex-col sm:flex-row gap-3">
+        <div class="relative flex-1">
+          <input
+            id="search-input"
+            type="text"
+            placeholder="Buscar productos..."
+            class="w-full border border-gray-300 rounded-xl px-4 py-2.5 pl-10 text-sm focus:outline-none focus:ring-2 focus:ring-rose-400 bg-white"
+            aria-label="Buscar productos"
+          />
+          <svg class="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        </div>
+        <select id="sort-select" class="border border-gray-300 rounded-xl px-3 py-2.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-rose-400" aria-label="Ordenar productos">
+          <option value="default" data-i18n="sort_default">Ordenar por</option>
+          <option value="price-asc" data-i18n="sort_price_asc">Precio: menor a mayor</option>
+          <option value="price-desc" data-i18n="sort_price_desc">Precio: mayor a menor</option>
+          <option value="name-asc" data-i18n="sort_name_asc">Nombre: A – Z</option>
+          <option value="name-desc" data-i18n="sort_name_desc">Nombre: Z – A</option>
+        </select>
       </div>
-      <div id="no-results" class="hidden text-center text-gray-400 py-12 text-sm">No se encontraron productos.</div>
+      <div id="no-results" class="hidden text-center text-gray-400 py-12 text-sm" data-i18n="no_results">No se encontraron productos.</div>
       <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {% for item in site.data.catalog %}
       <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="{{ item.category }}" data-price="{{ item.price | remove: '$' }}" data-name="{{ item.description | downcase }}">
@@ -108,12 +117,14 @@
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     var buttons = document.querySelectorAll('.filter-btn');
-    var cards = document.querySelectorAll('.product-card');
+    var grid = document.getElementById('product-grid');
+    var cards = Array.from(document.querySelectorAll('.product-card'));
     var priceMinInput = document.getElementById('price-min');
     var priceMaxInput = document.getElementById('price-max');
     var priceFilterBtn = document.getElementById('price-filter-btn');
     var priceClearBtn = document.getElementById('price-clear-btn');
     var searchInput = document.getElementById('search-input');
+    var sortSelect = document.getElementById('sort-select');
     var noResults = document.getElementById('no-results');
 
     var activeCategory = 'todos';
@@ -135,6 +146,22 @@
         if (visible) visibleCount++;
       });
       noResults.classList.toggle('hidden', visibleCount > 0);
+    }
+
+    function sortCards() {
+      var sort = sortSelect.value;
+      var sorted = cards.slice();
+      if (sort === 'price-asc') {
+        sorted.sort(function (a, b) { return parseFloat(a.dataset.price) - parseFloat(b.dataset.price); });
+      } else if (sort === 'price-desc') {
+        sorted.sort(function (a, b) { return parseFloat(b.dataset.price) - parseFloat(a.dataset.price); });
+      } else if (sort === 'name-asc') {
+        sorted.sort(function (a, b) { return a.dataset.name.localeCompare(b.dataset.name); });
+      } else if (sort === 'name-desc') {
+        sorted.sort(function (a, b) { return b.dataset.name.localeCompare(a.dataset.name); });
+      }
+      sorted.forEach(function (card) { grid.appendChild(card); });
+      applyFilters();
     }
 
     buttons.forEach(function (btn) {
@@ -168,5 +195,7 @@
       searchTerm = this.value.toLowerCase().trim();
       applyFilters();
     });
+
+    sortSelect.addEventListener('change', sortCards);
   });
 </script>
