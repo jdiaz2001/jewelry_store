@@ -10,960 +10,906 @@
   <section id="catalog" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
   <h2 class="text-3xl font-bold text-center text-gray-800 mb-10">Catálogo de Productos</h2>
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-    
-    <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-      <!-- Image wrapper with fixed square aspect ratio -->
-      <div class="aspect-square overflow-hidden">
-        <img
-          src="/images/E0001.jpg"
-          alt="Broquel pandita premium"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-        />
-      </div>
+  <div class="flex flex-col md:flex-row gap-8">
 
-      <!-- Card body -->
-      <div class="p-4 flex flex-col gap-1">
-        <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0001</span>
-        <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel pandita premium</h3>
-        <span class="text-lg font-bold text-emerald-600 mt-1">$14</span>
+    <!-- Sidebar filters -->
+    <aside class="w-full md:w-56 shrink-0">
+      <div class="bg-white rounded-2xl shadow-md p-5 sticky top-6">
+        <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wider mb-4">Filtrar por tipo</h3>
+        <ul class="space-y-2">
+          <li>
+            <button
+              class="filter-btn w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 bg-emerald-100 text-emerald-700"
+              data-category="todos"
+              aria-pressed="true"
+            >
+              Todos
+            </button>
+          </li>
+          <li>
+            <button
+              class="filter-btn w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 text-gray-600 hover:bg-gray-100"
+              data-category="aretes"
+              aria-pressed="false"
+            >
+              Aretes
+            </button>
+          </li>
+          <li>
+            <button
+              class="filter-btn w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 text-gray-600 hover:bg-gray-100"
+              data-category="dijes"
+              aria-pressed="false"
+            >
+              Dijes
+            </button>
+          </li>
+          <li>
+            <button
+              class="filter-btn w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 text-gray-600 hover:bg-gray-100"
+              data-category="anillos"
+              aria-pressed="false"
+            >
+              Anillos
+            </button>
+          </li>
+        </ul>
       </div>
-    </div>
-    
-    <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-      <!-- Image wrapper with fixed square aspect ratio -->
-      <div class="aspect-square overflow-hidden">
-        <img
-          src="/images/E0002.jpg"
-          alt="Corazon blanco"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-        />
-      </div>
+    </aside>
 
-      <!-- Card body -->
-      <div class="p-4 flex flex-col gap-1">
-        <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0002</span>
-        <h3 class="text-sm font-semibold text-gray-700 leading-snug">Corazon blanco</h3>
-        <span class="text-lg font-bold text-emerald-600 mt-1">$14</span>
+    <!-- Product grid -->
+    <div id="product-grid" class="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+        <div class="aspect-square overflow-hidden">
+          <img
+            src="/jewelry_store/images/E0001.jpg"
+            alt="Broquel pandita premium"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="p-4 flex flex-col gap-1">
+          <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0001</span>
+          <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel pandita premium</h3>
+          <span class="text-lg font-bold text-emerald-600 mt-1">$14</span>
+        </div>
       </div>
+      
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+        <div class="aspect-square overflow-hidden">
+          <img
+            src="/jewelry_store/images/E0002.jpg"
+            alt="Corazon blanco"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="p-4 flex flex-col gap-1">
+          <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0002</span>
+          <h3 class="text-sm font-semibold text-gray-700 leading-snug">Corazon blanco</h3>
+          <span class="text-lg font-bold text-emerald-600 mt-1">$14</span>
+        </div>
+      </div>
+      
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+        <div class="aspect-square overflow-hidden">
+          <img
+            src="/jewelry_store/images/E0003.jpg"
+            alt="Broquel Negro"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="p-4 flex flex-col gap-1">
+          <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0003</span>
+          <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel Negro</h3>
+          <span class="text-lg font-bold text-emerald-600 mt-1">$14</span>
+        </div>
+      </div>
+      
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+        <div class="aspect-square overflow-hidden">
+          <img
+            src="/jewelry_store/images/E0004.jpg"
+            alt="Broquel Flor Azul"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="p-4 flex flex-col gap-1">
+          <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0004</span>
+          <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel Flor Azul</h3>
+          <span class="text-lg font-bold text-emerald-600 mt-1">$14</span>
+        </div>
+      </div>
+      
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+        <div class="aspect-square overflow-hidden">
+          <img
+            src="/jewelry_store/images/E0005.jpg"
+            alt="Broquel Pinguino"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="p-4 flex flex-col gap-1">
+          <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0005</span>
+          <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel Pinguino</h3>
+          <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
+        </div>
+      </div>
+      
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+        <div class="aspect-square overflow-hidden">
+          <img
+            src="/jewelry_store/images/E0006.jpg"
+            alt="Broquel Ositos Blanco B"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="p-4 flex flex-col gap-1">
+          <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0006</span>
+          <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel Ositos Blanco B</h3>
+          <span class="text-lg font-bold text-emerald-600 mt-1">$18</span>
+        </div>
+      </div>
+      
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+        <div class="aspect-square overflow-hidden">
+          <img
+            src="/jewelry_store/images/E0007.jpg"
+            alt="Arracada Tursal 2.5"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="p-4 flex flex-col gap-1">
+          <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0007</span>
+          <h3 class="text-sm font-semibold text-gray-700 leading-snug">Arracada Tursal 2.5</h3>
+          <span class="text-lg font-bold text-emerald-600 mt-1">$35</span>
+        </div>
+      </div>
+      
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+        <div class="aspect-square overflow-hidden">
+          <img
+            src="/jewelry_store/images/E0008.jpg"
+            alt="Broquel Unicornio"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="p-4 flex flex-col gap-1">
+          <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0008</span>
+          <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel Unicornio</h3>
+          <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
+        </div>
+      </div>
+      
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+        <div class="aspect-square overflow-hidden">
+          <img
+            src="/jewelry_store/images/E0009.jpg"
+            alt="Arracada Tai 3CM"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="p-4 flex flex-col gap-1">
+          <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0009</span>
+          <h3 class="text-sm font-semibold text-gray-700 leading-snug">Arracada Tai 3CM</h3>
+          <span class="text-lg font-bold text-emerald-600 mt-1">$70</span>
+        </div>
+      </div>
+      
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+        <div class="aspect-square overflow-hidden">
+          <img
+            src="/jewelry_store/images/E0010.jpg"
+            alt="Broquel Monito 8mm"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="p-4 flex flex-col gap-1">
+          <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0010</span>
+          <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel Monito 8mm</h3>
+          <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
+        </div>
+      </div>
+      
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+        <div class="aspect-square overflow-hidden">
+          <img
+            src="/jewelry_store/images/E0011.jpg"
+            alt="Arracada faceta 2cm"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="p-4 flex flex-col gap-1">
+          <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0011</span>
+          <h3 class="text-sm font-semibold text-gray-700 leading-snug">Arracada faceta 2cm</h3>
+          <span class="text-lg font-bold text-emerald-600 mt-1">$20</span>
+        </div>
+      </div>
+      
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+        <div class="aspect-square overflow-hidden">
+          <img
+            src="/jewelry_store/images/E0012.jpg"
+            alt="Broquel redondo Azul"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="p-4 flex flex-col gap-1">
+          <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0012</span>
+          <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel redondo Azul</h3>
+          <span class="text-lg font-bold text-emerald-600 mt-1">$14</span>
+        </div>
+      </div>
+      
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+        <div class="aspect-square overflow-hidden">
+          <img
+            src="/jewelry_store/images/E0013.jpg"
+            alt="Broquel Osito Verde"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="p-4 flex flex-col gap-1">
+          <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0013</span>
+          <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel Osito Verde</h3>
+          <span class="text-lg font-bold text-emerald-600 mt-1">$14</span>
+        </div>
+      </div>
+      
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+        <div class="aspect-square overflow-hidden">
+          <img
+            src="/jewelry_store/images/E0014.jpg"
+            alt="Broquel Curvo Rombo"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="p-4 flex flex-col gap-1">
+          <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0014</span>
+          <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel Curvo Rombo</h3>
+          <span class="text-lg font-bold text-emerald-600 mt-1">$14</span>
+        </div>
+      </div>
+      
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+        <div class="aspect-square overflow-hidden">
+          <img
+            src="/jewelry_store/images/E0015.jpg"
+            alt="Broquel premium Mariposa blanco 7mm"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="p-4 flex flex-col gap-1">
+          <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0015</span>
+          <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel premium Mariposa blanco 7mm</h3>
+          <span class="text-lg font-bold text-emerald-600 mt-1">$17</span>
+        </div>
+      </div>
+      
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+        <div class="aspect-square overflow-hidden">
+          <img
+            src="/jewelry_store/images/E0016.jpg"
+            alt="Broquel Corazon Azul"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="p-4 flex flex-col gap-1">
+          <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0016</span>
+          <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel Corazon Azul</h3>
+          <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
+        </div>
+      </div>
+      
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+        <div class="aspect-square overflow-hidden">
+          <img
+            src="/jewelry_store/images/E0017.jpg"
+            alt="Broquel Elefante"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="p-4 flex flex-col gap-1">
+          <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0017</span>
+          <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel Elefante</h3>
+          <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
+        </div>
+      </div>
+      
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+        <div class="aspect-square overflow-hidden">
+          <img
+            src="/jewelry_store/images/E0018.jpg"
+            alt="Broquel corazon Rojo"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="p-4 flex flex-col gap-1">
+          <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0018</span>
+          <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel corazon Rojo</h3>
+          <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
+        </div>
+      </div>
+      
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+        <div class="aspect-square overflow-hidden">
+          <img
+            src="/jewelry_store/images/E0019.jpg"
+            alt="Broquel Corona"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="p-4 flex flex-col gap-1">
+          <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0019</span>
+          <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel Corona</h3>
+          <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
+        </div>
+      </div>
+      
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+        <div class="aspect-square overflow-hidden">
+          <img
+            src="/jewelry_store/images/E0020.jpg"
+            alt="Broquel Piedrita blanca"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="p-4 flex flex-col gap-1">
+          <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0020</span>
+          <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel Piedrita blanca</h3>
+          <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
+        </div>
+      </div>
+      
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+        <div class="aspect-square overflow-hidden">
+          <img
+            src="/jewelry_store/images/E0021.jpg"
+            alt="Broquel Redondo Morado"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="p-4 flex flex-col gap-1">
+          <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0021</span>
+          <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel Redondo Morado</h3>
+          <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
+        </div>
+      </div>
+      
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+        <div class="aspect-square overflow-hidden">
+          <img
+            src="/jewelry_store/images/E0022.jpg"
+            alt="Broquel Chihuahua 5.5mm"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="p-4 flex flex-col gap-1">
+          <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0022</span>
+          <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel Chihuahua 5.5mm</h3>
+          <span class="text-lg font-bold text-emerald-600 mt-1">$20</span>
+        </div>
+      </div>
+      
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+        <div class="aspect-square overflow-hidden">
+          <img
+            src="/jewelry_store/images/E0023.jpg"
+            alt="Broquel Flor Verde"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="p-4 flex flex-col gap-1">
+          <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0023</span>
+          <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel Flor Verde</h3>
+          <span class="text-lg font-bold text-emerald-600 mt-1">$14</span>
+        </div>
+      </div>
+      
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+        <div class="aspect-square overflow-hidden">
+          <img
+            src="/jewelry_store/images/E0024.jpg"
+            alt="Arracada calado Gota 5mm"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="p-4 flex flex-col gap-1">
+          <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0024</span>
+          <h3 class="text-sm font-semibold text-gray-700 leading-snug">Arracada calado Gota 5mm</h3>
+          <span class="text-lg font-bold text-emerald-600 mt-1">$50</span>
+        </div>
+      </div>
+      
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+        <div class="aspect-square overflow-hidden">
+          <img
+            src="/jewelry_store/images/E0025.jpg"
+            alt="Broquel estrella verde"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="p-4 flex flex-col gap-1">
+          <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0025</span>
+          <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel estrella verde</h3>
+          <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
+        </div>
+      </div>
+      
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+        <div class="aspect-square overflow-hidden">
+          <img
+            src="/jewelry_store/images/E0026.jpg"
+            alt="Broquel redondo Rojo"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="p-4 flex flex-col gap-1">
+          <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0026</span>
+          <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel redondo Rojo</h3>
+          <span class="text-lg font-bold text-emerald-600 mt-1">$14</span>
+        </div>
+      </div>
+      
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+        <div class="aspect-square overflow-hidden">
+          <img
+            src="/jewelry_store/images/E0027.jpg"
+            alt="Broquel cuartera Blanco"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="p-4 flex flex-col gap-1">
+          <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0027</span>
+          <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel cuartera Blanco</h3>
+          <span class="text-lg font-bold text-emerald-600 mt-1">$14</span>
+        </div>
+      </div>
+      
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+        <div class="aspect-square overflow-hidden">
+          <img
+            src="/jewelry_store/images/E0029.jpg"
+            alt="Broquel virgen 6."
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="p-4 flex flex-col gap-1">
+          <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0029</span>
+          <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel virgen 6.</h3>
+          <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
+        </div>
+      </div>
+      
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+        <div class="aspect-square overflow-hidden">
+          <img
+            src="/jewelry_store/images/E0030.jpg"
+            alt="Broquel Corona 2."
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="p-4 flex flex-col gap-1">
+          <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0030</span>
+          <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel Corona 2.</h3>
+          <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
+        </div>
+      </div>
+      
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+        <div class="aspect-square overflow-hidden">
+          <img
+            src="/jewelry_store/images/E0031.jpg"
+            alt="Broquel Premium Flor"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="p-4 flex flex-col gap-1">
+          <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0031</span>
+          <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel Premium Flor</h3>
+          <span class="text-lg font-bold text-emerald-600 mt-1">$16</span>
+        </div>
+      </div>
+      
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+        <div class="aspect-square overflow-hidden">
+          <img
+            src="/jewelry_store/images/E0033.jpg"
+            alt="Broquel Manzana"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="p-4 flex flex-col gap-1">
+          <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0033</span>
+          <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel Manzana</h3>
+          <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
+        </div>
+      </div>
+      
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+        <div class="aspect-square overflow-hidden">
+          <img
+            src="/jewelry_store/images/E0035.jpg"
+            alt="Broquel sol"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="p-4 flex flex-col gap-1">
+          <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0035</span>
+          <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel sol</h3>
+          <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
+        </div>
+      </div>
+      
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+        <div class="aspect-square overflow-hidden">
+          <img
+            src="/jewelry_store/images/E0036.jpg"
+            alt="Broquel pollitos"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="p-4 flex flex-col gap-1">
+          <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0036</span>
+          <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel pollitos</h3>
+          <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
+        </div>
+      </div>
+      
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+        <div class="aspect-square overflow-hidden">
+          <img
+            src="/jewelry_store/images/E0037.jpg"
+            alt="Broquel Premium Flor Rosa"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="p-4 flex flex-col gap-1">
+          <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0037</span>
+          <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel Premium Flor Rosa</h3>
+          <span class="text-lg font-bold text-emerald-600 mt-1">$16</span>
+        </div>
+      </div>
+      
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+        <div class="aspect-square overflow-hidden">
+          <img
+            src="/jewelry_store/images/E0038.jpg"
+            alt="Broquel delfines"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="p-4 flex flex-col gap-1">
+          <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0038</span>
+          <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel delfines</h3>
+          <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
+        </div>
+      </div>
+      
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+        <div class="aspect-square overflow-hidden">
+          <img
+            src="/jewelry_store/images/E0040.jpg"
+            alt="Arete libelula"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="p-4 flex flex-col gap-1">
+          <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0040</span>
+          <h3 class="text-sm font-semibold text-gray-700 leading-snug">Arete libelula</h3>
+          <span class="text-lg font-bold text-emerald-600 mt-1">$20</span>
+        </div>
+      </div>
+      
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+        <div class="aspect-square overflow-hidden">
+          <img
+            src="/jewelry_store/images/E0041.jpg"
+            alt="Broquel Gatita Azul"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="p-4 flex flex-col gap-1">
+          <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0041</span>
+          <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel Gatita Azul</h3>
+          <span class="text-lg font-bold text-emerald-600 mt-1">$15</span>
+        </div>
+      </div>
+      
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+        <div class="aspect-square overflow-hidden">
+          <img
+            src="/jewelry_store/images/E0042.jpg"
+            alt="Broquel angel"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="p-4 flex flex-col gap-1">
+          <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0042</span>
+          <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel angel</h3>
+          <span class="text-lg font-bold text-emerald-600 mt-1">$14</span>
+        </div>
+      </div>
+      
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+        <div class="aspect-square overflow-hidden">
+          <img
+            src="/jewelry_store/images/E0043.jpg"
+            alt="Broquel elefante Rojo"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="p-4 flex flex-col gap-1">
+          <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0043</span>
+          <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel elefante Rojo</h3>
+          <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
+        </div>
+      </div>
+      
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+        <div class="aspect-square overflow-hidden">
+          <img
+            src="/jewelry_store/images/E0044.jpg"
+            alt="Broquel corazones"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="p-4 flex flex-col gap-1">
+          <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0044</span>
+          <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel corazones</h3>
+          <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
+        </div>
+      </div>
+      
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+        <div class="aspect-square overflow-hidden">
+          <img
+            src="/jewelry_store/images/E0045.jpg"
+            alt="Broquel flores olivo"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="p-4 flex flex-col gap-1">
+          <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0045</span>
+          <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel flores olivo</h3>
+          <span class="text-lg font-bold text-emerald-600 mt-1">$15</span>
+        </div>
+      </div>
+      
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+        <div class="aspect-square overflow-hidden">
+          <img
+            src="/jewelry_store/images/E0046.jpg"
+            alt="Broquel cruz"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="p-4 flex flex-col gap-1">
+          <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0046</span>
+          <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel cruz</h3>
+          <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
+        </div>
+      </div>
+      
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+        <div class="aspect-square overflow-hidden">
+          <img
+            src="/jewelry_store/images/E0047.jpg"
+            alt="Broquel Angel"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="p-4 flex flex-col gap-1">
+          <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0047</span>
+          <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel Angel</h3>
+          <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
+        </div>
+      </div>
+      
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+        <div class="aspect-square overflow-hidden">
+          <img
+            src="/jewelry_store/images/E0049.jpg"
+            alt="Broquel flor Azul larga"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="p-4 flex flex-col gap-1">
+          <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0049</span>
+          <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel flor Azul larga</h3>
+          <span class="text-lg font-bold text-emerald-600 mt-1">$14</span>
+        </div>
+      </div>
+      
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+        <div class="aspect-square overflow-hidden">
+          <img
+            src="/jewelry_store/images/E0051.jpg"
+            alt="Huggie Mini Estrella de Mar"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="p-4 flex flex-col gap-1">
+          <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0051</span>
+          <h3 class="text-sm font-semibold text-gray-700 leading-snug">Huggie Mini Estrella de Mar</h3>
+          <span class="text-lg font-bold text-emerald-600 mt-1">$20</span>
+        </div>
+      </div>
+      
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="dijes">
+        <div class="aspect-square overflow-hidden">
+          <img
+            src="/jewelry_store/images/P0001.jpg"
+            alt="Dije Niño"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="p-4 flex flex-col gap-1">
+          <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">P0001</span>
+          <h3 class="text-sm font-semibold text-gray-700 leading-snug">Dije Niño</h3>
+          <span class="text-lg font-bold text-emerald-600 mt-1">$19</span>
+        </div>
+      </div>
+      
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="dijes">
+        <div class="aspect-square overflow-hidden">
+          <img
+            src="/jewelry_store/images/P0002.jpg"
+            alt="Dije Colibri"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="p-4 flex flex-col gap-1">
+          <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">P0002</span>
+          <h3 class="text-sm font-semibold text-gray-700 leading-snug">Dije Colibri</h3>
+          <span class="text-lg font-bold text-emerald-600 mt-1">$40</span>
+        </div>
+      </div>
+      
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="dijes">
+        <div class="aspect-square overflow-hidden">
+          <img
+            src="/jewelry_store/images/P0003.jpg"
+            alt="Dije Niña"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="p-4 flex flex-col gap-1">
+          <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">P0003</span>
+          <h3 class="text-sm font-semibold text-gray-700 leading-snug">Dije Niña</h3>
+          <span class="text-lg font-bold text-emerald-600 mt-1">$19</span>
+        </div>
+      </div>
+      
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="anillos">
+        <div class="aspect-square overflow-hidden">
+          <img
+            src="/jewelry_store/images/R0001.jpg"
+            alt="Anillo Solitario"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="p-4 flex flex-col gap-1">
+          <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">R0001</span>
+          <h3 class="text-sm font-semibold text-gray-700 leading-snug">Anillo Solitario</h3>
+          <span class="text-lg font-bold text-emerald-600 mt-1">$29</span>
+        </div>
+      </div>
+      
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="anillos">
+        <div class="aspect-square overflow-hidden">
+          <img
+            src="/jewelry_store/images/R0002.jpg"
+            alt="Anillo Abrazo"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="p-4 flex flex-col gap-1">
+          <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">R0002</span>
+          <h3 class="text-sm font-semibold text-gray-700 leading-snug">Anillo Abrazo</h3>
+          <span class="text-lg font-bold text-emerald-600 mt-1">$40</span>
+        </div>
+      </div>
+      
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="anillos">
+        <div class="aspect-square overflow-hidden">
+          <img
+            src="/jewelry_store/images/R0003.jpg"
+            alt="Anillo Medallita"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="p-4 flex flex-col gap-1">
+          <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">R0003</span>
+          <h3 class="text-sm font-semibold text-gray-700 leading-snug">Anillo Medallita</h3>
+          <span class="text-lg font-bold text-emerald-600 mt-1">$29</span>
+        </div>
+      </div>
+      
     </div>
-    
-    <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-      <!-- Image wrapper with fixed square aspect ratio -->
-      <div class="aspect-square overflow-hidden">
-        <img
-          src="/images/E0003.jpg"
-          alt="Broquel Negro"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-        />
-      </div>
 
-      <!-- Card body -->
-      <div class="p-4 flex flex-col gap-1">
-        <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0003</span>
-        <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel Negro</h3>
-        <span class="text-lg font-bold text-emerald-600 mt-1">$14</span>
-      </div>
-    </div>
-    
-    <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-      <!-- Image wrapper with fixed square aspect ratio -->
-      <div class="aspect-square overflow-hidden">
-        <img
-          src="/images/E0004.jpg"
-          alt="Broquel Flor Azul"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-        />
-      </div>
-
-      <!-- Card body -->
-      <div class="p-4 flex flex-col gap-1">
-        <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0004</span>
-        <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel Flor Azul</h3>
-        <span class="text-lg font-bold text-emerald-600 mt-1">$14</span>
-      </div>
-    </div>
-    
-    <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-      <!-- Image wrapper with fixed square aspect ratio -->
-      <div class="aspect-square overflow-hidden">
-        <img
-          src="/images/E0005.jpg"
-          alt="Broquel Pinguino"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-        />
-      </div>
-
-      <!-- Card body -->
-      <div class="p-4 flex flex-col gap-1">
-        <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0005</span>
-        <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel Pinguino</h3>
-        <span class="text-lg font-bold text-emerald-600 mt-1">$14</span>
-      </div>
-    </div>
-    
-    <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-      <!-- Image wrapper with fixed square aspect ratio -->
-      <div class="aspect-square overflow-hidden">
-        <img
-          src="/images/E0006.jpg"
-          alt="Broquel Ositos Blanco"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-        />
-      </div>
-
-      <!-- Card body -->
-      <div class="p-4 flex flex-col gap-1">
-        <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0006</span>
-        <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel Ositos Blanco</h3>
-        <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
-      </div>
-    </div>
-    
-    <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-      <!-- Image wrapper with fixed square aspect ratio -->
-      <div class="aspect-square overflow-hidden">
-        <img
-          src="/images/E0007.jpg"
-          alt="Arracada tusal"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-        />
-      </div>
-
-      <!-- Card body -->
-      <div class="p-4 flex flex-col gap-1">
-        <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0007</span>
-        <h3 class="text-sm font-semibold text-gray-700 leading-snug">Arracada tusal</h3>
-        <span class="text-lg font-bold text-emerald-600 mt-1">$35</span>
-      </div>
-    </div>
-    
-    <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-      <!-- Image wrapper with fixed square aspect ratio -->
-      <div class="aspect-square overflow-hidden">
-        <img
-          src="/images/E0008.jpg"
-          alt="Broquel unicornio"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-        />
-      </div>
-
-      <!-- Card body -->
-      <div class="p-4 flex flex-col gap-1">
-        <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0008</span>
-        <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel unicornio</h3>
-        <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
-      </div>
-    </div>
-    
-    <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-      <!-- Image wrapper with fixed square aspect ratio -->
-      <div class="aspect-square overflow-hidden">
-        <img
-          src="/images/E0009.jpg"
-          alt="Arracada liza 3CM"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-        />
-      </div>
-
-      <!-- Card body -->
-      <div class="p-4 flex flex-col gap-1">
-        <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0009</span>
-        <h3 class="text-sm font-semibold text-gray-700 leading-snug">Arracada liza 3CM</h3>
-        <span class="text-lg font-bold text-emerald-600 mt-1">$70</span>
-      </div>
-    </div>
-    
-    <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-      <!-- Image wrapper with fixed square aspect ratio -->
-      <div class="aspect-square overflow-hidden">
-        <img
-          src="/images/E0010.jpg"
-          alt="Broquel moito 8mm"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-        />
-      </div>
-
-      <!-- Card body -->
-      <div class="p-4 flex flex-col gap-1">
-        <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0010</span>
-        <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel moito 8mm</h3>
-        <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
-      </div>
-    </div>
-    
-    <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-      <!-- Image wrapper with fixed square aspect ratio -->
-      <div class="aspect-square overflow-hidden">
-        <img
-          src="/images/E0011.jpg"
-          alt="Arracada faceta 2cm"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-        />
-      </div>
-
-      <!-- Card body -->
-      <div class="p-4 flex flex-col gap-1">
-        <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0011</span>
-        <h3 class="text-sm font-semibold text-gray-700 leading-snug">Arracada faceta 2cm</h3>
-        <span class="text-lg font-bold text-emerald-600 mt-1">$20</span>
-      </div>
-    </div>
-    
-    <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-      <!-- Image wrapper with fixed square aspect ratio -->
-      <div class="aspect-square overflow-hidden">
-        <img
-          src="/images/E0012.jpg"
-          alt="Broquel redondo Azul"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-        />
-      </div>
-
-      <!-- Card body -->
-      <div class="p-4 flex flex-col gap-1">
-        <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0012</span>
-        <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel redondo Azul</h3>
-        <span class="text-lg font-bold text-emerald-600 mt-1">$14</span>
-      </div>
-    </div>
-    
-    <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-      <!-- Image wrapper with fixed square aspect ratio -->
-      <div class="aspect-square overflow-hidden">
-        <img
-          src="/images/E0013.jpg"
-          alt="Osito verde broquel"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-        />
-      </div>
-
-      <!-- Card body -->
-      <div class="p-4 flex flex-col gap-1">
-        <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0013</span>
-        <h3 class="text-sm font-semibold text-gray-700 leading-snug">Osito verde broquel</h3>
-        <span class="text-lg font-bold text-emerald-600 mt-1">$14</span>
-      </div>
-    </div>
-    
-    <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-      <!-- Image wrapper with fixed square aspect ratio -->
-      <div class="aspect-square overflow-hidden">
-        <img
-          src="/images/E0014.jpg"
-          alt="Broquel clavo rombo"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-        />
-      </div>
-
-      <!-- Card body -->
-      <div class="p-4 flex flex-col gap-1">
-        <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0014</span>
-        <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel clavo rombo</h3>
-        <span class="text-lg font-bold text-emerald-600 mt-1">$14</span>
-      </div>
-    </div>
-    
-    <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-      <!-- Image wrapper with fixed square aspect ratio -->
-      <div class="aspect-square overflow-hidden">
-        <img
-          src="/images/E0015.jpg"
-          alt="Broquel premium Mariposa blanco 7mm"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-        />
-      </div>
-
-      <!-- Card body -->
-      <div class="p-4 flex flex-col gap-1">
-        <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0015</span>
-        <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel premium Mariposa blanco 7mm</h3>
-        <span class="text-lg font-bold text-emerald-600 mt-1">$17</span>
-      </div>
-    </div>
-    
-    <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-      <!-- Image wrapper with fixed square aspect ratio -->
-      <div class="aspect-square overflow-hidden">
-        <img
-          src="/images/E0016.jpg"
-          alt="Corazon Azul"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-        />
-      </div>
-
-      <!-- Card body -->
-      <div class="p-4 flex flex-col gap-1">
-        <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0016</span>
-        <h3 class="text-sm font-semibold text-gray-700 leading-snug">Corazon Azul</h3>
-        <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
-      </div>
-    </div>
-    
-    <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-      <!-- Image wrapper with fixed square aspect ratio -->
-      <div class="aspect-square overflow-hidden">
-        <img
-          src="/images/E0017.jpg"
-          alt="Elefante"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-        />
-      </div>
-
-      <!-- Card body -->
-      <div class="p-4 flex flex-col gap-1">
-        <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0017</span>
-        <h3 class="text-sm font-semibold text-gray-700 leading-snug">Elefante</h3>
-        <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
-      </div>
-    </div>
-    
-    <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-      <!-- Image wrapper with fixed square aspect ratio -->
-      <div class="aspect-square overflow-hidden">
-        <img
-          src="/images/E0018.jpg"
-          alt="Broquel corazon Rojo"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-        />
-      </div>
-
-      <!-- Card body -->
-      <div class="p-4 flex flex-col gap-1">
-        <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0018</span>
-        <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel corazon Rojo</h3>
-        <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
-      </div>
-    </div>
-    
-    <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-      <!-- Image wrapper with fixed square aspect ratio -->
-      <div class="aspect-square overflow-hidden">
-        <img
-          src="/images/E0019.jpg"
-          alt="Broquel Corona"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-        />
-      </div>
-
-      <!-- Card body -->
-      <div class="p-4 flex flex-col gap-1">
-        <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0019</span>
-        <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel Corona</h3>
-        <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
-      </div>
-    </div>
-    
-    <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-      <!-- Image wrapper with fixed square aspect ratio -->
-      <div class="aspect-square overflow-hidden">
-        <img
-          src="/images/E0020.jpg"
-          alt="Piedrita blanca"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-        />
-      </div>
-
-      <!-- Card body -->
-      <div class="p-4 flex flex-col gap-1">
-        <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0020</span>
-        <h3 class="text-sm font-semibold text-gray-700 leading-snug">Piedrita blanca</h3>
-        <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
-      </div>
-    </div>
-    
-    <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-      <!-- Image wrapper with fixed square aspect ratio -->
-      <div class="aspect-square overflow-hidden">
-        <img
-          src="/images/E0021.jpg"
-          alt="Broquel redondo Morado"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-        />
-      </div>
-
-      <!-- Card body -->
-      <div class="p-4 flex flex-col gap-1">
-        <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0021</span>
-        <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel redondo Morado</h3>
-        <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
-      </div>
-    </div>
-    
-    <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-      <!-- Image wrapper with fixed square aspect ratio -->
-      <div class="aspect-square overflow-hidden">
-        <img
-          src="/images/E0022.jpg"
-          alt="Broquel chihuahua 5.5 mm"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-        />
-      </div>
-
-      <!-- Card body -->
-      <div class="p-4 flex flex-col gap-1">
-        <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0022</span>
-        <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel chihuahua 5.5 mm</h3>
-        <span class="text-lg font-bold text-emerald-600 mt-1">$20</span>
-      </div>
-    </div>
-    
-    <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-      <!-- Image wrapper with fixed square aspect ratio -->
-      <div class="aspect-square overflow-hidden">
-        <img
-          src="/images/E0023.jpg"
-          alt="Broquel flor verde"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-        />
-      </div>
-
-      <!-- Card body -->
-      <div class="p-4 flex flex-col gap-1">
-        <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0023</span>
-        <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel flor verde</h3>
-        <span class="text-lg font-bold text-emerald-600 mt-1">$14</span>
-      </div>
-    </div>
-    
-    <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-      <!-- Image wrapper with fixed square aspect ratio -->
-      <div class="aspect-square overflow-hidden">
-        <img
-          src="/images/E0024.jpg"
-          alt="Arracada calado Gota 5m"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-        />
-      </div>
-
-      <!-- Card body -->
-      <div class="p-4 flex flex-col gap-1">
-        <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0024</span>
-        <h3 class="text-sm font-semibold text-gray-700 leading-snug">Arracada calado Gota 5m</h3>
-        <span class="text-lg font-bold text-emerald-600 mt-1">$19</span>
-      </div>
-    </div>
-    
-    <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-      <!-- Image wrapper with fixed square aspect ratio -->
-      <div class="aspect-square overflow-hidden">
-        <img
-          src="/images/E0025.jpg"
-          alt="Broquel estrella verde"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-        />
-      </div>
-
-      <!-- Card body -->
-      <div class="p-4 flex flex-col gap-1">
-        <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0025</span>
-        <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel estrella verde</h3>
-        <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
-      </div>
-    </div>
-    
-    <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-      <!-- Image wrapper with fixed square aspect ratio -->
-      <div class="aspect-square overflow-hidden">
-        <img
-          src="/images/E0026.jpg"
-          alt="Broquel redondo Rojo"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-        />
-      </div>
-
-      <!-- Card body -->
-      <div class="p-4 flex flex-col gap-1">
-        <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0026</span>
-        <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel redondo Rojo</h3>
-        <span class="text-lg font-bold text-emerald-600 mt-1">$14</span>
-      </div>
-    </div>
-    
-    <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-      <!-- Image wrapper with fixed square aspect ratio -->
-      <div class="aspect-square overflow-hidden">
-        <img
-          src="/images/E0027.jpg"
-          alt="Broquel cuartera Blanco"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-        />
-      </div>
-
-      <!-- Card body -->
-      <div class="p-4 flex flex-col gap-1">
-        <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0027</span>
-        <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel cuartera Blanco</h3>
-        <span class="text-lg font-bold text-emerald-600 mt-1">$14</span>
-      </div>
-    </div>
-    
-    <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-      <!-- Image wrapper with fixed square aspect ratio -->
-      <div class="aspect-square overflow-hidden">
-        <img
-          src="/images/E0028.jpg"
-          alt="Osito blanco"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-        />
-      </div>
-
-      <!-- Card body -->
-      <div class="p-4 flex flex-col gap-1">
-        <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0028</span>
-        <h3 class="text-sm font-semibold text-gray-700 leading-snug">Osito blanco</h3>
-        <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
-      </div>
-    </div>
-    
-    <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-      <!-- Image wrapper with fixed square aspect ratio -->
-      <div class="aspect-square overflow-hidden">
-        <img
-          src="/images/E0029.jpg"
-          alt="Broquel virgen 6."
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-        />
-      </div>
-
-      <!-- Card body -->
-      <div class="p-4 flex flex-col gap-1">
-        <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0029</span>
-        <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel virgen 6.</h3>
-        <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
-      </div>
-    </div>
-    
-    <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-      <!-- Image wrapper with fixed square aspect ratio -->
-      <div class="aspect-square overflow-hidden">
-        <img
-          src="/images/E0030.jpg"
-          alt="Broquel Corona 2."
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-        />
-      </div>
-
-      <!-- Card body -->
-      <div class="p-4 flex flex-col gap-1">
-        <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0030</span>
-        <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel Corona 2.</h3>
-        <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
-      </div>
-    </div>
-    
-    <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-      <!-- Image wrapper with fixed square aspect ratio -->
-      <div class="aspect-square overflow-hidden">
-        <img
-          src="/images/E0031.jpg"
-          alt="Flor Rosa"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-        />
-      </div>
-
-      <!-- Card body -->
-      <div class="p-4 flex flex-col gap-1">
-        <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0031</span>
-        <h3 class="text-sm font-semibold text-gray-700 leading-snug">Flor Rosa</h3>
-        <span class="text-lg font-bold text-emerald-600 mt-1">$16</span>
-      </div>
-    </div>
-    
-    <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-      <!-- Image wrapper with fixed square aspect ratio -->
-      <div class="aspect-square overflow-hidden">
-        <img
-          src="/images/E0032.jpg"
-          alt="Broquel Elefante"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-        />
-      </div>
-
-      <!-- Card body -->
-      <div class="p-4 flex flex-col gap-1">
-        <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0032</span>
-        <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel Elefante</h3>
-        <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
-      </div>
-    </div>
-    
-    <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-      <!-- Image wrapper with fixed square aspect ratio -->
-      <div class="aspect-square overflow-hidden">
-        <img
-          src="/images/E0033.jpg"
-          alt="Manzana"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-        />
-      </div>
-
-      <!-- Card body -->
-      <div class="p-4 flex flex-col gap-1">
-        <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0033</span>
-        <h3 class="text-sm font-semibold text-gray-700 leading-snug">Manzana</h3>
-        <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
-      </div>
-    </div>
-    
-    <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-      <!-- Image wrapper with fixed square aspect ratio -->
-      <div class="aspect-square overflow-hidden">
-        <img
-          src="/images/E0034.jpg"
-          alt="Broquel Redondo"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-        />
-      </div>
-
-      <!-- Card body -->
-      <div class="p-4 flex flex-col gap-1">
-        <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0034</span>
-        <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel Redondo</h3>
-        <span class="text-lg font-bold text-emerald-600 mt-1">$14</span>
-      </div>
-    </div>
-    
-    <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-      <!-- Image wrapper with fixed square aspect ratio -->
-      <div class="aspect-square overflow-hidden">
-        <img
-          src="/images/E0035.jpg"
-          alt="Broquel sol"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-        />
-      </div>
-
-      <!-- Card body -->
-      <div class="p-4 flex flex-col gap-1">
-        <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0035</span>
-        <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel sol</h3>
-        <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
-      </div>
-    </div>
-    
-    <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-      <!-- Image wrapper with fixed square aspect ratio -->
-      <div class="aspect-square overflow-hidden">
-        <img
-          src="/images/E0036.jpg"
-          alt="Broquel pollitos"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-        />
-      </div>
-
-      <!-- Card body -->
-      <div class="p-4 flex flex-col gap-1">
-        <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0036</span>
-        <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel pollitos</h3>
-        <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
-      </div>
-    </div>
-    
-    <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-      <!-- Image wrapper with fixed square aspect ratio -->
-      <div class="aspect-square overflow-hidden">
-        <img
-          src="/images/E0037.jpg"
-          alt="Premium flor Rosa"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-        />
-      </div>
-
-      <!-- Card body -->
-      <div class="p-4 flex flex-col gap-1">
-        <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0037</span>
-        <h3 class="text-sm font-semibold text-gray-700 leading-snug">Premium flor Rosa</h3>
-        <span class="text-lg font-bold text-emerald-600 mt-1">$16</span>
-      </div>
-    </div>
-    
-    <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-      <!-- Image wrapper with fixed square aspect ratio -->
-      <div class="aspect-square overflow-hidden">
-        <img
-          src="/images/E0038.jpg"
-          alt="Broquel delfines"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-        />
-      </div>
-
-      <!-- Card body -->
-      <div class="p-4 flex flex-col gap-1">
-        <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0038</span>
-        <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel delfines</h3>
-        <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
-      </div>
-    </div>
-    
-    <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-      <!-- Image wrapper with fixed square aspect ratio -->
-      <div class="aspect-square overflow-hidden">
-        <img
-          src="/images/E0039.jpg"
-          alt="Broquel redondo Rosa"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-        />
-      </div>
-
-      <!-- Card body -->
-      <div class="p-4 flex flex-col gap-1">
-        <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0039</span>
-        <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel redondo Rosa</h3>
-        <span class="text-lg font-bold text-emerald-600 mt-1">$14</span>
-      </div>
-    </div>
-    
-    <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-      <!-- Image wrapper with fixed square aspect ratio -->
-      <div class="aspect-square overflow-hidden">
-        <img
-          src="/images/E0040.jpg"
-          alt="Arete libelula"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-        />
-      </div>
-
-      <!-- Card body -->
-      <div class="p-4 flex flex-col gap-1">
-        <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0040</span>
-        <h3 class="text-sm font-semibold text-gray-700 leading-snug">Arete libelula</h3>
-        <span class="text-lg font-bold text-emerald-600 mt-1">$20</span>
-      </div>
-    </div>
-    
-    <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-      <!-- Image wrapper with fixed square aspect ratio -->
-      <div class="aspect-square overflow-hidden">
-        <img
-          src="/images/E0041.jpg"
-          alt="Broquel Gatita Azul"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-        />
-      </div>
-
-      <!-- Card body -->
-      <div class="p-4 flex flex-col gap-1">
-        <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0041</span>
-        <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel Gatita Azul</h3>
-        <span class="text-lg font-bold text-emerald-600 mt-1">$15</span>
-      </div>
-    </div>
-    
-    <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-      <!-- Image wrapper with fixed square aspect ratio -->
-      <div class="aspect-square overflow-hidden">
-        <img
-          src="/images/E0042.jpg"
-          alt="Broquel angel"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-        />
-      </div>
-
-      <!-- Card body -->
-      <div class="p-4 flex flex-col gap-1">
-        <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0042</span>
-        <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel angel</h3>
-        <span class="text-lg font-bold text-emerald-600 mt-1">$14</span>
-      </div>
-    </div>
-    
-    <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-      <!-- Image wrapper with fixed square aspect ratio -->
-      <div class="aspect-square overflow-hidden">
-        <img
-          src="/images/E0043.jpg"
-          alt="Broquel elefante Rojo"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-        />
-      </div>
-
-      <!-- Card body -->
-      <div class="p-4 flex flex-col gap-1">
-        <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0043</span>
-        <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel elefante Rojo</h3>
-        <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
-      </div>
-    </div>
-    
-    <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-      <!-- Image wrapper with fixed square aspect ratio -->
-      <div class="aspect-square overflow-hidden">
-        <img
-          src="/images/E0044.jpg"
-          alt="Broquel corazones"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-        />
-      </div>
-
-      <!-- Card body -->
-      <div class="p-4 flex flex-col gap-1">
-        <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0044</span>
-        <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel corazones</h3>
-        <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
-      </div>
-    </div>
-    
-    <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-      <!-- Image wrapper with fixed square aspect ratio -->
-      <div class="aspect-square overflow-hidden">
-        <img
-          src="/images/E0045.jpg"
-          alt="Broquel flor cz olivo"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-        />
-      </div>
-
-      <!-- Card body -->
-      <div class="p-4 flex flex-col gap-1">
-        <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0045</span>
-        <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel flor cz olivo</h3>
-        <span class="text-lg font-bold text-emerald-600 mt-1">$15</span>
-      </div>
-    </div>
-    
-    <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-      <!-- Image wrapper with fixed square aspect ratio -->
-      <div class="aspect-square overflow-hidden">
-        <img
-          src="/images/E0046.jpg"
-          alt="Broquel cruz"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-        />
-      </div>
-
-      <!-- Card body -->
-      <div class="p-4 flex flex-col gap-1">
-        <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0046</span>
-        <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel cruz</h3>
-        <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
-      </div>
-    </div>
-    
-    <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-      <!-- Image wrapper with fixed square aspect ratio -->
-      <div class="aspect-square overflow-hidden">
-        <img
-          src="/images/E0047.jpg"
-          alt="Broquel angel (Premium)"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-        />
-      </div>
-
-      <!-- Card body -->
-      <div class="p-4 flex flex-col gap-1">
-        <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0047</span>
-        <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel angel (Premium)</h3>
-        <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
-      </div>
-    </div>
-    
-    <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-      <!-- Image wrapper with fixed square aspect ratio -->
-      <div class="aspect-square overflow-hidden">
-        <img
-          src="/images/E0048.jpg"
-          alt="Broquel redondo Blanco"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-        />
-      </div>
-
-      <!-- Card body -->
-      <div class="p-4 flex flex-col gap-1">
-        <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0048</span>
-        <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel redondo Blanco</h3>
-        <span class="text-lg font-bold text-emerald-600 mt-1">$14</span>
-      </div>
-    </div>
-    
-    <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-      <!-- Image wrapper with fixed square aspect ratio -->
-      <div class="aspect-square overflow-hidden">
-        <img
-          src="/images/E0049.jpg"
-          alt="Broquel flor Azul larga"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-        />
-      </div>
-
-      <!-- Card body -->
-      <div class="p-4 flex flex-col gap-1">
-        <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0049</span>
-        <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel flor Azul larga</h3>
-        <span class="text-lg font-bold text-emerald-600 mt-1">$14</span>
-      </div>
-    </div>
-    
-    <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-      <!-- Image wrapper with fixed square aspect ratio -->
-      <div class="aspect-square overflow-hidden">
-        <img
-          src="/images/E0050.jpg"
-          alt="Broquel flor Blanca larga"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-        />
-      </div>
-
-      <!-- Card body -->
-      <div class="p-4 flex flex-col gap-1">
-        <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0050</span>
-        <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel flor Blanca larga</h3>
-        <span class="text-lg font-bold text-emerald-600 mt-1">$14</span>
-      </div>
-    </div>
-    
   </div>
 </section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const buttons = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.product-card');
+
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        const category = this.dataset.category;
+
+        // Update button styles
+        buttons.forEach(function (b) {
+          b.className = 'filter-btn w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 text-gray-600 hover:bg-gray-100';
+          b.setAttribute('aria-pressed', 'false');
+        });
+        this.className = 'filter-btn w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 bg-emerald-100 text-emerald-700';
+        this.setAttribute('aria-pressed', 'true');
+
+        // Filter cards
+        cards.forEach(function (card) {
+          if (category === 'todos' || card.dataset.category === category) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  });
+</script>
 
 
 </body>
