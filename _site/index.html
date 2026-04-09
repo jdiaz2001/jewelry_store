@@ -7,23 +7,82 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-50 text-gray-900 min-h-screen">
-  <section id="catalog" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+  <!-- Header -->
+  <header class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+      <a href="/jewelry_store/" class="text-xl font-bold tracking-tight text-gray-800">
+        💎 Jewelry Store
+      </a>
+      <nav class="hidden sm:flex items-center gap-4 text-sm font-medium text-gray-600">
+        <a href="/jewelry_store/#catalog" class="hover:text-rose-600 transition-colors">Catálogo</a>
+        <div class="flex items-center gap-3 ml-2">
+          <a href="https://facebook.com/" target="_blank" rel="noopener" aria-label="Facebook" class="text-gray-400 hover:text-rose-600 transition-colors">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram" class="text-gray-400 hover:text-rose-600 transition-colors">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="https://tiktok.com/" target="_blank" rel="noopener" aria-label="TikTok" class="text-gray-400 hover:text-rose-600 transition-colors">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+          </a>
+        </div>
+        <a href="https://wa.me/521234567890" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 transition-colors">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.61.609l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.387 0-4.594-.822-6.34-2.2l-.144-.112-3.3 1.106 1.106-3.3-.112-.144A9.935 9.935 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          Contacto
+        </a>
+      </nav>
+      <!-- Mobile menu button -->
+      <button id="mobile-menu-btn" class="sm:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100" aria-label="Abrir menú">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="sm:hidden hidden border-t border-gray-100 px-4 pb-4 space-y-2">
+      <a href="/jewelry_store/#catalog" class="block py-2 text-sm text-gray-600 hover:text-rose-600">Catálogo</a>
+      <a href="https://wa.me/521234567890" target="_blank" rel="noopener" class="block py-2 text-sm text-emerald-600 font-medium">📱 WhatsApp</a>
+      <div class="flex items-center gap-4 py-2">
+        <a href="https://facebook.com/" target="_blank" rel="noopener" aria-label="Facebook" class="text-gray-400 hover:text-rose-600"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+        <a href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram" class="text-gray-400 hover:text-rose-600"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+        <a href="https://tiktok.com/" target="_blank" rel="noopener" aria-label="TikTok" class="text-gray-400 hover:text-rose-600"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero banner -->
+<section class="relative bg-gradient-to-r from-rose-700 to-rose-500 text-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 flex flex-col items-center text-center gap-4">
+    <h1 class="text-4xl sm:text-5xl font-bold tracking-tight">Joyería con estilo</h1>
+    <p class="text-lg sm:text-xl text-rose-100 max-w-xl">Descubre nuestra colección de aretes, dijes y anillos. Piezas únicas para cada ocasión.</p>
+    <a href="#catalog" class="mt-4 inline-block bg-white text-rose-700 font-semibold px-6 py-3 rounded-lg hover:bg-rose-50 transition-colors">
+      Ver catálogo
+    </a>
+  </div>
+</section>
+
+<section id="catalog" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
   <h2 class="text-3xl font-bold text-center text-gray-800 mb-10">Catálogo de Productos</h2>
 
   <div class="flex flex-col md:flex-row gap-8">
 
+    <!-- Count products per category -->
+    
+    
+    
+    
+
     <!-- Sidebar filters -->
     <aside class="w-full md:w-56 shrink-0">
-      <div class="bg-white rounded-2xl shadow-md p-5 sticky top-6">
+      <div class="bg-white rounded-2xl shadow-md p-5 sticky top-20">
         <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wider mb-4">Filtrar por tipo</h3>
         <ul class="space-y-2">
           <li>
             <button
-              class="filter-btn w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 bg-emerald-100 text-emerald-700"
+              class="filter-btn w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 bg-rose-100 text-rose-700"
               data-category="todos"
               aria-pressed="true"
             >
-              Todos
+              Todos <span class="text-xs opacity-70">(51)</span>
             </button>
           </li>
           <li>
@@ -32,7 +91,7 @@
               data-category="aretes"
               aria-pressed="false"
             >
-              Aretes
+              Aretes <span class="text-xs opacity-70">(45)</span>
             </button>
           </li>
           <li>
@@ -41,7 +100,7 @@
               data-category="dijes"
               aria-pressed="false"
             >
-              Dijes
+              Dijes <span class="text-xs opacity-70">(3)</span>
             </button>
           </li>
           <li>
@@ -50,17 +109,43 @@
               data-category="anillos"
               aria-pressed="false"
             >
-              Anillos
+              Anillos <span class="text-xs opacity-70">(3)</span>
             </button>
           </li>
         </ul>
+
+        <!-- Price filter -->
+        <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wider mt-6 mb-3">Precio</h3>
+        <div class="flex items-center gap-2">
+          <input id="price-min" type="number" min="0" placeholder="Min" class="w-full border border-gray-300 rounded-lg px-2 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-rose-400" />
+          <span class="text-gray-400 text-sm">–</span>
+          <input id="price-max" type="number" min="0" placeholder="Max" class="w-full border border-gray-300 rounded-lg px-2 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-rose-400" />
+        </div>
+        <button id="price-filter-btn" class="mt-3 w-full bg-rose-600 text-white text-sm font-medium py-2 rounded-lg hover:bg-rose-700 transition-colors">
+          Filtrar
+        </button>
+        <button id="price-clear-btn" class="mt-1 w-full text-xs text-gray-400 hover:text-gray-600 transition-colors">
+          Limpiar precio
+        </button>
       </div>
     </aside>
 
-    <!-- Product grid -->
-    <div id="product-grid" class="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- Search + Product grid -->
+    <div class="flex-1">
+      <div class="mb-6 relative">
+        <input
+          id="search-input"
+          type="text"
+          placeholder="Buscar productos..."
+          class="w-full border border-gray-300 rounded-xl px-4 py-2.5 pl-10 text-sm focus:outline-none focus:ring-2 focus:ring-rose-400 bg-white"
+          aria-label="Buscar productos"
+        />
+        <svg class="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      </div>
+      <div id="no-results" class="hidden text-center text-gray-400 py-12 text-sm">No se encontraron productos.</div>
+      <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       
-      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes" data-price="14" data-name="broquel pandita premium">
         <div class="aspect-square overflow-hidden">
           <img
             src="/jewelry_store/images/E0001.jpg"
@@ -72,11 +157,11 @@
         <div class="p-4 flex flex-col gap-1">
           <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0001</span>
           <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel pandita premium</h3>
-          <span class="text-lg font-bold text-emerald-600 mt-1">$14</span>
+          <span class="text-lg font-bold text-rose-600 mt-1">$14</span>
         </div>
       </div>
       
-      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes" data-price="14" data-name="corazon blanco">
         <div class="aspect-square overflow-hidden">
           <img
             src="/jewelry_store/images/E0002.jpg"
@@ -88,11 +173,11 @@
         <div class="p-4 flex flex-col gap-1">
           <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0002</span>
           <h3 class="text-sm font-semibold text-gray-700 leading-snug">Corazon blanco</h3>
-          <span class="text-lg font-bold text-emerald-600 mt-1">$14</span>
+          <span class="text-lg font-bold text-rose-600 mt-1">$14</span>
         </div>
       </div>
       
-      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes" data-price="14" data-name="broquel negro">
         <div class="aspect-square overflow-hidden">
           <img
             src="/jewelry_store/images/E0003.jpg"
@@ -104,11 +189,11 @@
         <div class="p-4 flex flex-col gap-1">
           <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0003</span>
           <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel Negro</h3>
-          <span class="text-lg font-bold text-emerald-600 mt-1">$14</span>
+          <span class="text-lg font-bold text-rose-600 mt-1">$14</span>
         </div>
       </div>
       
-      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes" data-price="14" data-name="broquel flor azul">
         <div class="aspect-square overflow-hidden">
           <img
             src="/jewelry_store/images/E0004.jpg"
@@ -120,11 +205,11 @@
         <div class="p-4 flex flex-col gap-1">
           <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0004</span>
           <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel Flor Azul</h3>
-          <span class="text-lg font-bold text-emerald-600 mt-1">$14</span>
+          <span class="text-lg font-bold text-rose-600 mt-1">$14</span>
         </div>
       </div>
       
-      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes" data-price="13" data-name="broquel pinguino">
         <div class="aspect-square overflow-hidden">
           <img
             src="/jewelry_store/images/E0005.jpg"
@@ -136,11 +221,11 @@
         <div class="p-4 flex flex-col gap-1">
           <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0005</span>
           <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel Pinguino</h3>
-          <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
+          <span class="text-lg font-bold text-rose-600 mt-1">$13</span>
         </div>
       </div>
       
-      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes" data-price="18" data-name="broquel ositos blanco b">
         <div class="aspect-square overflow-hidden">
           <img
             src="/jewelry_store/images/E0006.jpg"
@@ -152,11 +237,11 @@
         <div class="p-4 flex flex-col gap-1">
           <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0006</span>
           <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel Ositos Blanco B</h3>
-          <span class="text-lg font-bold text-emerald-600 mt-1">$18</span>
+          <span class="text-lg font-bold text-rose-600 mt-1">$18</span>
         </div>
       </div>
       
-      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes" data-price="35" data-name="arracada tursal 2.5">
         <div class="aspect-square overflow-hidden">
           <img
             src="/jewelry_store/images/E0007.jpg"
@@ -168,11 +253,11 @@
         <div class="p-4 flex flex-col gap-1">
           <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0007</span>
           <h3 class="text-sm font-semibold text-gray-700 leading-snug">Arracada Tursal 2.5</h3>
-          <span class="text-lg font-bold text-emerald-600 mt-1">$35</span>
+          <span class="text-lg font-bold text-rose-600 mt-1">$35</span>
         </div>
       </div>
       
-      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes" data-price="13" data-name="broquel unicornio">
         <div class="aspect-square overflow-hidden">
           <img
             src="/jewelry_store/images/E0008.jpg"
@@ -184,11 +269,11 @@
         <div class="p-4 flex flex-col gap-1">
           <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0008</span>
           <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel Unicornio</h3>
-          <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
+          <span class="text-lg font-bold text-rose-600 mt-1">$13</span>
         </div>
       </div>
       
-      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes" data-price="70" data-name="arracada tai 3cm">
         <div class="aspect-square overflow-hidden">
           <img
             src="/jewelry_store/images/E0009.jpg"
@@ -200,11 +285,11 @@
         <div class="p-4 flex flex-col gap-1">
           <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0009</span>
           <h3 class="text-sm font-semibold text-gray-700 leading-snug">Arracada Tai 3CM</h3>
-          <span class="text-lg font-bold text-emerald-600 mt-1">$70</span>
+          <span class="text-lg font-bold text-rose-600 mt-1">$70</span>
         </div>
       </div>
       
-      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes" data-price="13" data-name="broquel monito 8mm">
         <div class="aspect-square overflow-hidden">
           <img
             src="/jewelry_store/images/E0010.jpg"
@@ -216,11 +301,11 @@
         <div class="p-4 flex flex-col gap-1">
           <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0010</span>
           <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel Monito 8mm</h3>
-          <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
+          <span class="text-lg font-bold text-rose-600 mt-1">$13</span>
         </div>
       </div>
       
-      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes" data-price="20" data-name="arracada faceta 2cm">
         <div class="aspect-square overflow-hidden">
           <img
             src="/jewelry_store/images/E0011.jpg"
@@ -232,11 +317,11 @@
         <div class="p-4 flex flex-col gap-1">
           <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0011</span>
           <h3 class="text-sm font-semibold text-gray-700 leading-snug">Arracada faceta 2cm</h3>
-          <span class="text-lg font-bold text-emerald-600 mt-1">$20</span>
+          <span class="text-lg font-bold text-rose-600 mt-1">$20</span>
         </div>
       </div>
       
-      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes" data-price="14" data-name="broquel redondo azul">
         <div class="aspect-square overflow-hidden">
           <img
             src="/jewelry_store/images/E0012.jpg"
@@ -248,11 +333,11 @@
         <div class="p-4 flex flex-col gap-1">
           <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0012</span>
           <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel redondo Azul</h3>
-          <span class="text-lg font-bold text-emerald-600 mt-1">$14</span>
+          <span class="text-lg font-bold text-rose-600 mt-1">$14</span>
         </div>
       </div>
       
-      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes" data-price="14" data-name="broquel osito verde">
         <div class="aspect-square overflow-hidden">
           <img
             src="/jewelry_store/images/E0013.jpg"
@@ -264,11 +349,11 @@
         <div class="p-4 flex flex-col gap-1">
           <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0013</span>
           <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel Osito Verde</h3>
-          <span class="text-lg font-bold text-emerald-600 mt-1">$14</span>
+          <span class="text-lg font-bold text-rose-600 mt-1">$14</span>
         </div>
       </div>
       
-      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes" data-price="14" data-name="broquel curvo rombo">
         <div class="aspect-square overflow-hidden">
           <img
             src="/jewelry_store/images/E0014.jpg"
@@ -280,11 +365,11 @@
         <div class="p-4 flex flex-col gap-1">
           <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0014</span>
           <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel Curvo Rombo</h3>
-          <span class="text-lg font-bold text-emerald-600 mt-1">$14</span>
+          <span class="text-lg font-bold text-rose-600 mt-1">$14</span>
         </div>
       </div>
       
-      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes" data-price="17" data-name="broquel premium mariposa blanco 7mm">
         <div class="aspect-square overflow-hidden">
           <img
             src="/jewelry_store/images/E0015.jpg"
@@ -296,11 +381,11 @@
         <div class="p-4 flex flex-col gap-1">
           <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0015</span>
           <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel premium Mariposa blanco 7mm</h3>
-          <span class="text-lg font-bold text-emerald-600 mt-1">$17</span>
+          <span class="text-lg font-bold text-rose-600 mt-1">$17</span>
         </div>
       </div>
       
-      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes" data-price="13" data-name="broquel corazon azul">
         <div class="aspect-square overflow-hidden">
           <img
             src="/jewelry_store/images/E0016.jpg"
@@ -312,11 +397,11 @@
         <div class="p-4 flex flex-col gap-1">
           <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0016</span>
           <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel Corazon Azul</h3>
-          <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
+          <span class="text-lg font-bold text-rose-600 mt-1">$13</span>
         </div>
       </div>
       
-      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes" data-price="13" data-name="broquel elefante">
         <div class="aspect-square overflow-hidden">
           <img
             src="/jewelry_store/images/E0017.jpg"
@@ -328,11 +413,11 @@
         <div class="p-4 flex flex-col gap-1">
           <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0017</span>
           <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel Elefante</h3>
-          <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
+          <span class="text-lg font-bold text-rose-600 mt-1">$13</span>
         </div>
       </div>
       
-      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes" data-price="13" data-name="broquel corazon rojo">
         <div class="aspect-square overflow-hidden">
           <img
             src="/jewelry_store/images/E0018.jpg"
@@ -344,11 +429,11 @@
         <div class="p-4 flex flex-col gap-1">
           <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0018</span>
           <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel corazon Rojo</h3>
-          <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
+          <span class="text-lg font-bold text-rose-600 mt-1">$13</span>
         </div>
       </div>
       
-      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes" data-price="13" data-name="broquel corona">
         <div class="aspect-square overflow-hidden">
           <img
             src="/jewelry_store/images/E0019.jpg"
@@ -360,11 +445,11 @@
         <div class="p-4 flex flex-col gap-1">
           <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0019</span>
           <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel Corona</h3>
-          <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
+          <span class="text-lg font-bold text-rose-600 mt-1">$13</span>
         </div>
       </div>
       
-      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes" data-price="13" data-name="broquel piedrita blanca">
         <div class="aspect-square overflow-hidden">
           <img
             src="/jewelry_store/images/E0020.jpg"
@@ -376,11 +461,11 @@
         <div class="p-4 flex flex-col gap-1">
           <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0020</span>
           <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel Piedrita blanca</h3>
-          <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
+          <span class="text-lg font-bold text-rose-600 mt-1">$13</span>
         </div>
       </div>
       
-      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes" data-price="13" data-name="broquel redondo morado">
         <div class="aspect-square overflow-hidden">
           <img
             src="/jewelry_store/images/E0021.jpg"
@@ -392,11 +477,11 @@
         <div class="p-4 flex flex-col gap-1">
           <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0021</span>
           <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel Redondo Morado</h3>
-          <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
+          <span class="text-lg font-bold text-rose-600 mt-1">$13</span>
         </div>
       </div>
       
-      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes" data-price="20" data-name="broquel chihuahua 5.5mm">
         <div class="aspect-square overflow-hidden">
           <img
             src="/jewelry_store/images/E0022.jpg"
@@ -408,11 +493,11 @@
         <div class="p-4 flex flex-col gap-1">
           <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0022</span>
           <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel Chihuahua 5.5mm</h3>
-          <span class="text-lg font-bold text-emerald-600 mt-1">$20</span>
+          <span class="text-lg font-bold text-rose-600 mt-1">$20</span>
         </div>
       </div>
       
-      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes" data-price="14" data-name="broquel flor verde">
         <div class="aspect-square overflow-hidden">
           <img
             src="/jewelry_store/images/E0023.jpg"
@@ -424,11 +509,11 @@
         <div class="p-4 flex flex-col gap-1">
           <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0023</span>
           <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel Flor Verde</h3>
-          <span class="text-lg font-bold text-emerald-600 mt-1">$14</span>
+          <span class="text-lg font-bold text-rose-600 mt-1">$14</span>
         </div>
       </div>
       
-      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes" data-price="50" data-name="arracada calado gota 5mm">
         <div class="aspect-square overflow-hidden">
           <img
             src="/jewelry_store/images/E0024.jpg"
@@ -440,11 +525,11 @@
         <div class="p-4 flex flex-col gap-1">
           <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0024</span>
           <h3 class="text-sm font-semibold text-gray-700 leading-snug">Arracada calado Gota 5mm</h3>
-          <span class="text-lg font-bold text-emerald-600 mt-1">$50</span>
+          <span class="text-lg font-bold text-rose-600 mt-1">$50</span>
         </div>
       </div>
       
-      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes" data-price="13" data-name="broquel estrella verde">
         <div class="aspect-square overflow-hidden">
           <img
             src="/jewelry_store/images/E0025.jpg"
@@ -456,11 +541,11 @@
         <div class="p-4 flex flex-col gap-1">
           <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0025</span>
           <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel estrella verde</h3>
-          <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
+          <span class="text-lg font-bold text-rose-600 mt-1">$13</span>
         </div>
       </div>
       
-      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes" data-price="14" data-name="broquel redondo rojo">
         <div class="aspect-square overflow-hidden">
           <img
             src="/jewelry_store/images/E0026.jpg"
@@ -472,11 +557,11 @@
         <div class="p-4 flex flex-col gap-1">
           <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0026</span>
           <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel redondo Rojo</h3>
-          <span class="text-lg font-bold text-emerald-600 mt-1">$14</span>
+          <span class="text-lg font-bold text-rose-600 mt-1">$14</span>
         </div>
       </div>
       
-      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes" data-price="14" data-name="broquel cuartera blanco">
         <div class="aspect-square overflow-hidden">
           <img
             src="/jewelry_store/images/E0027.jpg"
@@ -488,11 +573,11 @@
         <div class="p-4 flex flex-col gap-1">
           <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0027</span>
           <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel cuartera Blanco</h3>
-          <span class="text-lg font-bold text-emerald-600 mt-1">$14</span>
+          <span class="text-lg font-bold text-rose-600 mt-1">$14</span>
         </div>
       </div>
       
-      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes" data-price="13" data-name="broquel virgen 6.">
         <div class="aspect-square overflow-hidden">
           <img
             src="/jewelry_store/images/E0029.jpg"
@@ -504,11 +589,11 @@
         <div class="p-4 flex flex-col gap-1">
           <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0029</span>
           <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel virgen 6.</h3>
-          <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
+          <span class="text-lg font-bold text-rose-600 mt-1">$13</span>
         </div>
       </div>
       
-      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes" data-price="13" data-name="broquel corona 2.">
         <div class="aspect-square overflow-hidden">
           <img
             src="/jewelry_store/images/E0030.jpg"
@@ -520,11 +605,11 @@
         <div class="p-4 flex flex-col gap-1">
           <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0030</span>
           <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel Corona 2.</h3>
-          <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
+          <span class="text-lg font-bold text-rose-600 mt-1">$13</span>
         </div>
       </div>
       
-      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes" data-price="16" data-name="broquel premium flor">
         <div class="aspect-square overflow-hidden">
           <img
             src="/jewelry_store/images/E0031.jpg"
@@ -536,11 +621,11 @@
         <div class="p-4 flex flex-col gap-1">
           <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0031</span>
           <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel Premium Flor</h3>
-          <span class="text-lg font-bold text-emerald-600 mt-1">$16</span>
+          <span class="text-lg font-bold text-rose-600 mt-1">$16</span>
         </div>
       </div>
       
-      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes" data-price="13" data-name="broquel manzana">
         <div class="aspect-square overflow-hidden">
           <img
             src="/jewelry_store/images/E0033.jpg"
@@ -552,11 +637,11 @@
         <div class="p-4 flex flex-col gap-1">
           <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0033</span>
           <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel Manzana</h3>
-          <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
+          <span class="text-lg font-bold text-rose-600 mt-1">$13</span>
         </div>
       </div>
       
-      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes" data-price="13" data-name="broquel sol">
         <div class="aspect-square overflow-hidden">
           <img
             src="/jewelry_store/images/E0035.jpg"
@@ -568,11 +653,11 @@
         <div class="p-4 flex flex-col gap-1">
           <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0035</span>
           <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel sol</h3>
-          <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
+          <span class="text-lg font-bold text-rose-600 mt-1">$13</span>
         </div>
       </div>
       
-      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes" data-price="13" data-name="broquel pollitos">
         <div class="aspect-square overflow-hidden">
           <img
             src="/jewelry_store/images/E0036.jpg"
@@ -584,11 +669,11 @@
         <div class="p-4 flex flex-col gap-1">
           <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0036</span>
           <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel pollitos</h3>
-          <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
+          <span class="text-lg font-bold text-rose-600 mt-1">$13</span>
         </div>
       </div>
       
-      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes" data-price="16" data-name="broquel premium flor rosa">
         <div class="aspect-square overflow-hidden">
           <img
             src="/jewelry_store/images/E0037.jpg"
@@ -600,11 +685,11 @@
         <div class="p-4 flex flex-col gap-1">
           <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0037</span>
           <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel Premium Flor Rosa</h3>
-          <span class="text-lg font-bold text-emerald-600 mt-1">$16</span>
+          <span class="text-lg font-bold text-rose-600 mt-1">$16</span>
         </div>
       </div>
       
-      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes" data-price="13" data-name="broquel delfines">
         <div class="aspect-square overflow-hidden">
           <img
             src="/jewelry_store/images/E0038.jpg"
@@ -616,11 +701,11 @@
         <div class="p-4 flex flex-col gap-1">
           <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0038</span>
           <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel delfines</h3>
-          <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
+          <span class="text-lg font-bold text-rose-600 mt-1">$13</span>
         </div>
       </div>
       
-      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes" data-price="20" data-name="arete libelula">
         <div class="aspect-square overflow-hidden">
           <img
             src="/jewelry_store/images/E0040.jpg"
@@ -632,11 +717,11 @@
         <div class="p-4 flex flex-col gap-1">
           <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0040</span>
           <h3 class="text-sm font-semibold text-gray-700 leading-snug">Arete libelula</h3>
-          <span class="text-lg font-bold text-emerald-600 mt-1">$20</span>
+          <span class="text-lg font-bold text-rose-600 mt-1">$20</span>
         </div>
       </div>
       
-      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes" data-price="15" data-name="broquel gatita azul">
         <div class="aspect-square overflow-hidden">
           <img
             src="/jewelry_store/images/E0041.jpg"
@@ -648,11 +733,11 @@
         <div class="p-4 flex flex-col gap-1">
           <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0041</span>
           <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel Gatita Azul</h3>
-          <span class="text-lg font-bold text-emerald-600 mt-1">$15</span>
+          <span class="text-lg font-bold text-rose-600 mt-1">$15</span>
         </div>
       </div>
       
-      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes" data-price="14" data-name="broquel angel">
         <div class="aspect-square overflow-hidden">
           <img
             src="/jewelry_store/images/E0042.jpg"
@@ -664,11 +749,11 @@
         <div class="p-4 flex flex-col gap-1">
           <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0042</span>
           <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel angel</h3>
-          <span class="text-lg font-bold text-emerald-600 mt-1">$14</span>
+          <span class="text-lg font-bold text-rose-600 mt-1">$14</span>
         </div>
       </div>
       
-      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes" data-price="13" data-name="broquel elefante rojo">
         <div class="aspect-square overflow-hidden">
           <img
             src="/jewelry_store/images/E0043.jpg"
@@ -680,11 +765,11 @@
         <div class="p-4 flex flex-col gap-1">
           <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0043</span>
           <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel elefante Rojo</h3>
-          <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
+          <span class="text-lg font-bold text-rose-600 mt-1">$13</span>
         </div>
       </div>
       
-      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes" data-price="13" data-name="broquel corazones">
         <div class="aspect-square overflow-hidden">
           <img
             src="/jewelry_store/images/E0044.jpg"
@@ -696,11 +781,11 @@
         <div class="p-4 flex flex-col gap-1">
           <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0044</span>
           <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel corazones</h3>
-          <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
+          <span class="text-lg font-bold text-rose-600 mt-1">$13</span>
         </div>
       </div>
       
-      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes" data-price="15" data-name="broquel flores olivo">
         <div class="aspect-square overflow-hidden">
           <img
             src="/jewelry_store/images/E0045.jpg"
@@ -712,11 +797,11 @@
         <div class="p-4 flex flex-col gap-1">
           <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0045</span>
           <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel flores olivo</h3>
-          <span class="text-lg font-bold text-emerald-600 mt-1">$15</span>
+          <span class="text-lg font-bold text-rose-600 mt-1">$15</span>
         </div>
       </div>
       
-      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes" data-price="13" data-name="broquel cruz">
         <div class="aspect-square overflow-hidden">
           <img
             src="/jewelry_store/images/E0046.jpg"
@@ -728,11 +813,11 @@
         <div class="p-4 flex flex-col gap-1">
           <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0046</span>
           <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel cruz</h3>
-          <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
+          <span class="text-lg font-bold text-rose-600 mt-1">$13</span>
         </div>
       </div>
       
-      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes" data-price="13" data-name="broquel angel">
         <div class="aspect-square overflow-hidden">
           <img
             src="/jewelry_store/images/E0047.jpg"
@@ -744,11 +829,11 @@
         <div class="p-4 flex flex-col gap-1">
           <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0047</span>
           <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel Angel</h3>
-          <span class="text-lg font-bold text-emerald-600 mt-1">$13</span>
+          <span class="text-lg font-bold text-rose-600 mt-1">$13</span>
         </div>
       </div>
       
-      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes" data-price="14" data-name="broquel flor azul larga">
         <div class="aspect-square overflow-hidden">
           <img
             src="/jewelry_store/images/E0049.jpg"
@@ -760,11 +845,11 @@
         <div class="p-4 flex flex-col gap-1">
           <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0049</span>
           <h3 class="text-sm font-semibold text-gray-700 leading-snug">Broquel flor Azul larga</h3>
-          <span class="text-lg font-bold text-emerald-600 mt-1">$14</span>
+          <span class="text-lg font-bold text-rose-600 mt-1">$14</span>
         </div>
       </div>
       
-      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes">
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="aretes" data-price="20" data-name="huggie mini estrella de mar">
         <div class="aspect-square overflow-hidden">
           <img
             src="/jewelry_store/images/E0051.jpg"
@@ -776,11 +861,11 @@
         <div class="p-4 flex flex-col gap-1">
           <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">E0051</span>
           <h3 class="text-sm font-semibold text-gray-700 leading-snug">Huggie Mini Estrella de Mar</h3>
-          <span class="text-lg font-bold text-emerald-600 mt-1">$20</span>
+          <span class="text-lg font-bold text-rose-600 mt-1">$20</span>
         </div>
       </div>
       
-      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="dijes">
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="dijes" data-price="19" data-name="dije niño">
         <div class="aspect-square overflow-hidden">
           <img
             src="/jewelry_store/images/P0001.jpg"
@@ -792,11 +877,11 @@
         <div class="p-4 flex flex-col gap-1">
           <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">P0001</span>
           <h3 class="text-sm font-semibold text-gray-700 leading-snug">Dije Niño</h3>
-          <span class="text-lg font-bold text-emerald-600 mt-1">$19</span>
+          <span class="text-lg font-bold text-rose-600 mt-1">$19</span>
         </div>
       </div>
       
-      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="dijes">
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="dijes" data-price="40" data-name="dije colibri">
         <div class="aspect-square overflow-hidden">
           <img
             src="/jewelry_store/images/P0002.jpg"
@@ -808,11 +893,11 @@
         <div class="p-4 flex flex-col gap-1">
           <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">P0002</span>
           <h3 class="text-sm font-semibold text-gray-700 leading-snug">Dije Colibri</h3>
-          <span class="text-lg font-bold text-emerald-600 mt-1">$40</span>
+          <span class="text-lg font-bold text-rose-600 mt-1">$40</span>
         </div>
       </div>
       
-      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="dijes">
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="dijes" data-price="19" data-name="dije niña">
         <div class="aspect-square overflow-hidden">
           <img
             src="/jewelry_store/images/P0003.jpg"
@@ -824,11 +909,11 @@
         <div class="p-4 flex flex-col gap-1">
           <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">P0003</span>
           <h3 class="text-sm font-semibold text-gray-700 leading-snug">Dije Niña</h3>
-          <span class="text-lg font-bold text-emerald-600 mt-1">$19</span>
+          <span class="text-lg font-bold text-rose-600 mt-1">$19</span>
         </div>
       </div>
       
-      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="anillos">
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="anillos" data-price="29" data-name="anillo solitario">
         <div class="aspect-square overflow-hidden">
           <img
             src="/jewelry_store/images/R0001.jpg"
@@ -840,11 +925,11 @@
         <div class="p-4 flex flex-col gap-1">
           <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">R0001</span>
           <h3 class="text-sm font-semibold text-gray-700 leading-snug">Anillo Solitario</h3>
-          <span class="text-lg font-bold text-emerald-600 mt-1">$29</span>
+          <span class="text-lg font-bold text-rose-600 mt-1">$29</span>
         </div>
       </div>
       
-      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="anillos">
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="anillos" data-price="40" data-name="anillo abrazo">
         <div class="aspect-square overflow-hidden">
           <img
             src="/jewelry_store/images/R0002.jpg"
@@ -856,11 +941,11 @@
         <div class="p-4 flex flex-col gap-1">
           <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">R0002</span>
           <h3 class="text-sm font-semibold text-gray-700 leading-snug">Anillo Abrazo</h3>
-          <span class="text-lg font-bold text-emerald-600 mt-1">$40</span>
+          <span class="text-lg font-bold text-rose-600 mt-1">$40</span>
         </div>
       </div>
       
-      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="anillos">
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="anillos" data-price="29" data-name="anillo medallita">
         <div class="aspect-square overflow-hidden">
           <img
             src="/jewelry_store/images/R0003.jpg"
@@ -872,10 +957,11 @@
         <div class="p-4 flex flex-col gap-1">
           <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">R0003</span>
           <h3 class="text-sm font-semibold text-gray-700 leading-snug">Anillo Medallita</h3>
-          <span class="text-lg font-bold text-emerald-600 mt-1">$29</span>
+          <span class="text-lg font-bold text-rose-600 mt-1">$29</span>
         </div>
       </div>
       
+      </div>
     </div>
 
   </div>
@@ -883,34 +969,132 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    const buttons = document.querySelectorAll('.filter-btn');
-    const cards = document.querySelectorAll('.product-card');
+    var buttons = document.querySelectorAll('.filter-btn');
+    var cards = document.querySelectorAll('.product-card');
+    var priceMinInput = document.getElementById('price-min');
+    var priceMaxInput = document.getElementById('price-max');
+    var priceFilterBtn = document.getElementById('price-filter-btn');
+    var priceClearBtn = document.getElementById('price-clear-btn');
+    var searchInput = document.getElementById('search-input');
+    var noResults = document.getElementById('no-results');
+
+    var activeCategory = 'todos';
+    var priceMin = null;
+    var priceMax = null;
+    var searchTerm = '';
+
+    function applyFilters() {
+      var visibleCount = 0;
+      cards.forEach(function (card) {
+        var matchCategory = activeCategory === 'todos' || card.dataset.category === activeCategory;
+        var cardPrice = parseFloat(card.dataset.price);
+        var matchPrice = true;
+        if (priceMin !== null) matchPrice = matchPrice && cardPrice >= priceMin;
+        if (priceMax !== null) matchPrice = matchPrice && cardPrice <= priceMax;
+        var matchSearch = !searchTerm || card.dataset.name.indexOf(searchTerm) !== -1;
+        var visible = matchCategory && matchPrice && matchSearch;
+        card.style.display = visible ? '' : 'none';
+        if (visible) visibleCount++;
+      });
+      noResults.classList.toggle('hidden', visibleCount > 0);
+    }
 
     buttons.forEach(function (btn) {
       btn.addEventListener('click', function () {
-        const category = this.dataset.category;
-
-        // Update button styles
+        activeCategory = this.dataset.category;
         buttons.forEach(function (b) {
           b.className = 'filter-btn w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 text-gray-600 hover:bg-gray-100';
           b.setAttribute('aria-pressed', 'false');
         });
-        this.className = 'filter-btn w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 bg-emerald-100 text-emerald-700';
+        this.className = 'filter-btn w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 bg-rose-100 text-rose-700';
         this.setAttribute('aria-pressed', 'true');
-
-        // Filter cards
-        cards.forEach(function (card) {
-          if (category === 'todos' || card.dataset.category === category) {
-            card.style.display = '';
-          } else {
-            card.style.display = 'none';
-          }
-        });
+        applyFilters();
       });
+    });
+
+    priceFilterBtn.addEventListener('click', function () {
+      priceMin = priceMinInput.value ? parseFloat(priceMinInput.value) : null;
+      priceMax = priceMaxInput.value ? parseFloat(priceMaxInput.value) : null;
+      applyFilters();
+    });
+
+    priceClearBtn.addEventListener('click', function () {
+      priceMinInput.value = '';
+      priceMaxInput.value = '';
+      priceMin = null;
+      priceMax = null;
+      applyFilters();
+    });
+
+    searchInput.addEventListener('input', function () {
+      searchTerm = this.value.toLowerCase().trim();
+      applyFilters();
     });
   });
 </script>
 
 
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-gray-300 mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
+
+        <!-- Store info -->
+        <div>
+          <h4 class="text-white font-bold text-lg mb-3">💎 Jewelry Store</h4>
+          <p class="text-sm leading-relaxed">Joyería de calidad con diseños únicos para cada ocasión.</p>
+        </div>
+
+        <!-- Contact -->
+        <div>
+          <h4 class="text-white font-semibold mb-3">Contacto</h4>
+          <ul class="space-y-2 text-sm">
+            <li class="flex items-center gap-2">
+              <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.61.609l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.387 0-4.594-.822-6.34-2.2l-.144-.112-3.3 1.106 1.106-3.3-.112-.144A9.935 9.935 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+              <a href="https://wa.me/521234567890" target="_blank" rel="noopener" class="hover:text-white transition-colors">WhatsApp</a>
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              <a href="mailto:contacto@ejemplo.com" class="hover:text-white transition-colors">contacto@ejemplo.com</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Hours -->
+        <div>
+          <h4 class="text-white font-semibold mb-3">Horario</h4>
+          <ul class="space-y-1 text-sm">
+            <li>Lunes – Viernes: 10:00 – 19:00</li>
+            <li>Sábado: 10:00 – 15:00</li>
+            <li>Domingo: Cerrado</li>
+          </ul>
+          <h4 class="text-white font-semibold mt-5 mb-3">Síguenos</h4>
+          <div class="flex items-center gap-4">
+            <a href="https://facebook.com/" target="_blank" rel="noopener" aria-label="Facebook" class="text-gray-400 hover:text-white transition-colors">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram" class="text-gray-400 hover:text-white transition-colors">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+            <a href="https://tiktok.com/" target="_blank" rel="noopener" aria-label="TikTok" class="text-gray-400 hover:text-white transition-colors">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="border-t border-gray-700 mt-8 pt-6 text-center text-xs text-gray-500">
+        © 2026 Jewelry Store. Todos los derechos reservados.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+  </script>
 </body>
 </html>

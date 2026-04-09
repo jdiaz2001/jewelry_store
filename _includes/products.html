@@ -3,18 +3,24 @@
 
   <div class="flex flex-col md:flex-row gap-8">
 
+    <!-- Count products per category -->
+    {% assign total = site.data.catalog | size %}
+    {% assign aretes_count = site.data.catalog | where: "category", "aretes" | size %}
+    {% assign dijes_count = site.data.catalog | where: "category", "dijes" | size %}
+    {% assign anillos_count = site.data.catalog | where: "category", "anillos" | size %}
+
     <!-- Sidebar filters -->
     <aside class="w-full md:w-56 shrink-0">
-      <div class="bg-white rounded-2xl shadow-md p-5 sticky top-6">
+      <div class="bg-white rounded-2xl shadow-md p-5 sticky top-20">
         <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wider mb-4">Filtrar por tipo</h3>
         <ul class="space-y-2">
           <li>
             <button
-              class="filter-btn w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 bg-emerald-100 text-emerald-700"
+              class="filter-btn w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 bg-rose-100 text-rose-700"
               data-category="todos"
               aria-pressed="true"
             >
-              Todos
+              Todos <span class="text-xs opacity-70">({{ total }})</span>
             </button>
           </li>
           <li>
@@ -23,7 +29,7 @@
               data-category="aretes"
               aria-pressed="false"
             >
-              Aretes
+              Aretes <span class="text-xs opacity-70">({{ aretes_count }})</span>
             </button>
           </li>
           <li>
@@ -32,7 +38,7 @@
               data-category="dijes"
               aria-pressed="false"
             >
-              Dijes
+              Dijes <span class="text-xs opacity-70">({{ dijes_count }})</span>
             </button>
           </li>
           <li>
@@ -41,17 +47,43 @@
               data-category="anillos"
               aria-pressed="false"
             >
-              Anillos
+              Anillos <span class="text-xs opacity-70">({{ anillos_count }})</span>
             </button>
           </li>
         </ul>
+
+        <!-- Price filter -->
+        <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wider mt-6 mb-3">Precio</h3>
+        <div class="flex items-center gap-2">
+          <input id="price-min" type="number" min="0" placeholder="Min" class="w-full border border-gray-300 rounded-lg px-2 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-rose-400" />
+          <span class="text-gray-400 text-sm">–</span>
+          <input id="price-max" type="number" min="0" placeholder="Max" class="w-full border border-gray-300 rounded-lg px-2 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-rose-400" />
+        </div>
+        <button id="price-filter-btn" class="mt-3 w-full bg-rose-600 text-white text-sm font-medium py-2 rounded-lg hover:bg-rose-700 transition-colors">
+          Filtrar
+        </button>
+        <button id="price-clear-btn" class="mt-1 w-full text-xs text-gray-400 hover:text-gray-600 transition-colors">
+          Limpiar precio
+        </button>
       </div>
     </aside>
 
-    <!-- Product grid -->
-    <div id="product-grid" class="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- Search + Product grid -->
+    <div class="flex-1">
+      <div class="mb-6 relative">
+        <input
+          id="search-input"
+          type="text"
+          placeholder="Buscar productos..."
+          class="w-full border border-gray-300 rounded-xl px-4 py-2.5 pl-10 text-sm focus:outline-none focus:ring-2 focus:ring-rose-400 bg-white"
+          aria-label="Buscar productos"
+        />
+        <svg class="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      </div>
+      <div id="no-results" class="hidden text-center text-gray-400 py-12 text-sm">No se encontraron productos.</div>
+      <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {% for item in site.data.catalog %}
-      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="{{ item.category }}">
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="{{ item.category }}" data-price="{{ item.price | remove: '$' }}" data-name="{{ item.description | downcase }}">
         <div class="aspect-square overflow-hidden">
           <img
             src="{{ '/images/' | append: item.ref_code | append: '.jpg' | relative_url }}"
@@ -63,10 +95,11 @@
         <div class="p-4 flex flex-col gap-1">
           <span class="text-xs font-mono text-gray-400 uppercase tracking-wide">{{ item.ref_code }}</span>
           <h3 class="text-sm font-semibold text-gray-700 leading-snug">{{ item.description }}</h3>
-          <span class="text-lg font-bold text-emerald-600 mt-1">{{ item.price }}</span>
+          <span class="text-lg font-bold text-rose-600 mt-1">{{ item.price }}</span>
         </div>
       </div>
       {% endfor %}
+      </div>
     </div>
 
   </div>
@@ -74,30 +107,66 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    const buttons = document.querySelectorAll('.filter-btn');
-    const cards = document.querySelectorAll('.product-card');
+    var buttons = document.querySelectorAll('.filter-btn');
+    var cards = document.querySelectorAll('.product-card');
+    var priceMinInput = document.getElementById('price-min');
+    var priceMaxInput = document.getElementById('price-max');
+    var priceFilterBtn = document.getElementById('price-filter-btn');
+    var priceClearBtn = document.getElementById('price-clear-btn');
+    var searchInput = document.getElementById('search-input');
+    var noResults = document.getElementById('no-results');
+
+    var activeCategory = 'todos';
+    var priceMin = null;
+    var priceMax = null;
+    var searchTerm = '';
+
+    function applyFilters() {
+      var visibleCount = 0;
+      cards.forEach(function (card) {
+        var matchCategory = activeCategory === 'todos' || card.dataset.category === activeCategory;
+        var cardPrice = parseFloat(card.dataset.price);
+        var matchPrice = true;
+        if (priceMin !== null) matchPrice = matchPrice && cardPrice >= priceMin;
+        if (priceMax !== null) matchPrice = matchPrice && cardPrice <= priceMax;
+        var matchSearch = !searchTerm || card.dataset.name.indexOf(searchTerm) !== -1;
+        var visible = matchCategory && matchPrice && matchSearch;
+        card.style.display = visible ? '' : 'none';
+        if (visible) visibleCount++;
+      });
+      noResults.classList.toggle('hidden', visibleCount > 0);
+    }
 
     buttons.forEach(function (btn) {
       btn.addEventListener('click', function () {
-        const category = this.dataset.category;
-
-        // Update button styles
+        activeCategory = this.dataset.category;
         buttons.forEach(function (b) {
           b.className = 'filter-btn w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 text-gray-600 hover:bg-gray-100';
           b.setAttribute('aria-pressed', 'false');
         });
-        this.className = 'filter-btn w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 bg-emerald-100 text-emerald-700';
+        this.className = 'filter-btn w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 bg-rose-100 text-rose-700';
         this.setAttribute('aria-pressed', 'true');
-
-        // Filter cards
-        cards.forEach(function (card) {
-          if (category === 'todos' || card.dataset.category === category) {
-            card.style.display = '';
-          } else {
-            card.style.display = 'none';
-          }
-        });
+        applyFilters();
       });
+    });
+
+    priceFilterBtn.addEventListener('click', function () {
+      priceMin = priceMinInput.value ? parseFloat(priceMinInput.value) : null;
+      priceMax = priceMaxInput.value ? parseFloat(priceMaxInput.value) : null;
+      applyFilters();
+    });
+
+    priceClearBtn.addEventListener('click', function () {
+      priceMinInput.value = '';
+      priceMaxInput.value = '';
+      priceMin = null;
+      priceMax = null;
+      applyFilters();
+    });
+
+    searchInput.addEventListener('input', function () {
+      searchTerm = this.value.toLowerCase().trim();
+      applyFilters();
     });
   });
 </script>
