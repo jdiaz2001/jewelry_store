@@ -290,3 +290,7 @@
   description: "Broquel Catarina Inflada"
   price: "$13"
   category: "aretes"
+- ref_code: "N0001"
+  description: "Collar Rosario"
+  price: "$60"
+  category: "collares"
