@@ -9,6 +9,7 @@
     {% assign dijes_count = site.data.catalog | where: "category", "dijes" | size %}
     {% assign anillos_count = site.data.catalog | where: "category", "anillos" | size %}
     {% assign collares_count = site.data.catalog | where: "category", "collares" | size %}
+    {% assign bolsas_count = site.data.catalog | where: "category", "bolsas" | size %}
 
     <!-- Sidebar filters -->
     <aside class="w-full md:w-56 shrink-0">
@@ -58,6 +59,15 @@
               aria-pressed="false"
             >
               <span data-i18n="filter_necklaces">Collares</span> <span class="text-xs opacity-70">({{ collares_count }})</span>
+            </button>
+          </li>
+          <li>
+            <button
+              class="filter-btn w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 text-gray-600 hover:bg-gray-100"
+              data-category="bolsas"
+              aria-pressed="false"
+            >
+              <span data-i18n="filter_bags">Bolsas</span> <span class="text-xs opacity-70">({{ bolsas_count }})</span>
             </button>
           </li>
         </ul>
