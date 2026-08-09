@@ -115,7 +115,7 @@
       <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="{{ item.category }}" data-price="{{ item.price | remove: '$' }}" data-name="{{ item.description | downcase }}">
         <div class="aspect-square overflow-hidden">
           <img
-            src="{{ '/images/' | append: item.ref_code | append: '.jpg' | relative_url }}"
+            src="{{ '/images/' | append: item.category | append: '/' | append: item.ref_code | append: '.jpg' | relative_url }}"
             alt="{{ item.description }}"
             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
             loading="lazy"
