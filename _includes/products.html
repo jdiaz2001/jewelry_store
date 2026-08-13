@@ -4,14 +4,14 @@
   <div class="flex flex-col md:flex-row gap-8">
 
     <!-- Count products per category -->
-    {% assign total = site.data.catalog | size %}
-    {% assign aretes_count = site.data.catalog | where: "category", "aretes" | size %}
-    {% assign dijes_count = site.data.catalog | where: "category", "dijes" | size %}
-    {% assign anillos_count = site.data.catalog | where: "category", "anillos" | size %}
-    {% assign collares_count = site.data.catalog | where: "category", "collares" | size %}
-    {% assign bolsas_count = site.data.catalog | where: "category", "bolsas" | size %}
-    {% assign arracadas_count = site.data.catalog | where: "category", "arracadas" | size %}
-    {% assign ear_cuff_count = site.data.catalog | where: "category", "ear_cuff" | size %}
+    {% assign aretes_count = site.data.aretes | size %}
+    {% assign dijes_count = site.data.dijes | size %}
+    {% assign anillos_count = site.data.anillos | size %}
+    {% assign collares_count = site.data.collares | size %}
+    {% assign bolsas_count = site.data.bolsas | size %}
+    {% assign arracadas_count = site.data.arracadas | size %}
+    {% assign ear_cuff_count = site.data.ear_cuff | size %}
+    {% assign total = aretes_count | plus: dijes_count | plus: anillos_count | plus: collares_count | plus: bolsas_count | plus: arracadas_count | plus: ear_cuff_count %}
 
     <!-- Sidebar filters -->
     <aside class="w-full md:w-56 shrink-0">
@@ -131,11 +131,14 @@
       </div>
       <div id="no-results" class="hidden text-center text-gray-400 py-12 text-sm" data-i18n="no_results">No se encontraron productos.</div>
       <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      {% for item in site.data.catalog %}
-      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="{{ item.category }}" data-price="{{ item.price | remove: '$' }}" data-name="{{ item.description | downcase }}">
+      {% assign categories = "aretes,dijes,anillos,collares,bolsas,arracadas,ear_cuff" | split: "," %}
+      {% for cat in categories %}
+        {% assign items = site.data[cat] %}
+        {% for item in items %}
+      <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300" data-category="{{ cat }}" data-price="{{ item.price | remove: '$' }}" data-name="{{ item.description | downcase }}">
         <div class="aspect-square overflow-hidden">
           <img
-            src="{{ '/images/' | append: item.category | append: '/' | append: item.ref_code | append: '.jpg' | relative_url }}"
+            src="{{ '/images/' | append: cat | append: '/' | append: item.ref_code | append: '.jpg' | relative_url }}"
             alt="{{ item.description }}"
             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
             loading="lazy"
@@ -147,6 +150,7 @@
           <span class="text-lg font-bold text-gray-800 mt-1">{{ item.price }}</span>
         </div>
       </div>
+        {% endfor %}
       {% endfor %}
       </div>
     </div>
