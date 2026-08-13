@@ -10,6 +10,8 @@
     {% assign anillos_count = site.data.catalog | where: "category", "anillos" | size %}
     {% assign collares_count = site.data.catalog | where: "category", "collares" | size %}
     {% assign bolsas_count = site.data.catalog | where: "category", "bolsas" | size %}
+    {% assign arracadas_count = site.data.catalog | where: "category", "arracadas" | size %}
+    {% assign ear_cuff_count = site.data.catalog | where: "category", "ear_cuff" | size %}
 
     <!-- Sidebar filters -->
     <aside class="w-full md:w-56 shrink-0">
@@ -68,6 +70,24 @@
               aria-pressed="false"
             >
               <span data-i18n="filter_bags">Bolsos Wayuu</span> <span class="text-xs opacity-70">({{ bolsas_count }})</span>
+            </button>
+          </li>
+          <li>
+            <button
+              class="filter-btn w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 text-gray-600 hover:bg-gray-100"
+              data-category="arracadas"
+              aria-pressed="false"
+            >
+              <span data-i18n="filter_arracadas">Arracadas</span> <span class="text-xs opacity-70">({{ arracadas_count }})</span>
+            </button>
+          </li>
+          <li>
+            <button
+              class="filter-btn w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 text-gray-600 hover:bg-gray-100"
+              data-category="ear_cuff"
+              aria-pressed="false"
+            >
+              <span data-i18n="filter_ear_cuff">Brazalete para oreja</span> <span class="text-xs opacity-70">({{ ear_cuff_count }})</span>
             </button>
           </li>
         </ul>
