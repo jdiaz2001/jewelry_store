@@ -11,7 +11,10 @@
     {% assign bolsas_count = site.data.bolsas | size %}
     {% assign arracadas_count = site.data.arracadas | size %}
     {% assign ear_cuff_count = site.data.ear_cuff | size %}
-    {% assign total = aretes_count | plus: dijes_count | plus: anillos_count | plus: collares_count | plus: bolsas_count | plus: arracadas_count | plus: ear_cuff_count %}
+    {% assign pulseras_count = site.data.pulseras | size %}
+    {% assign tobilleras_count = site.data.tobilleras | size %}
+    {% assign esmeraldas_count = site.data.esmeraldas | size %}
+    {% assign total = aretes_count | plus: dijes_count | plus: anillos_count | plus: collares_count | plus: bolsas_count | plus: arracadas_count | plus: ear_cuff_count | plus: pulseras_count | plus: tobilleras_count | plus: esmeraldas_count %}
 
     <!-- Sidebar filters -->
     <aside class="w-full md:w-56 shrink-0">
@@ -90,6 +93,33 @@
               <span data-i18n="filter_ear_cuff">Brazalete para oreja</span> <span class="text-xs opacity-70">({{ ear_cuff_count }})</span>
             </button>
           </li>
+          <li>
+            <button
+              class="filter-btn w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 text-gray-600 hover:bg-gray-100"
+              data-category="pulseras"
+              aria-pressed="false"
+            >
+              <span data-i18n="filter_bracelets">Pulseras</span> <span class="text-xs opacity-70">({{ pulseras_count }})</span>
+            </button>
+          </li>
+          <li>
+            <button
+              class="filter-btn w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 text-gray-600 hover:bg-gray-100"
+              data-category="tobilleras"
+              aria-pressed="false"
+            >
+              <span data-i18n="filter_anklets">Tobilleras</span> <span class="text-xs opacity-70">({{ tobilleras_count }})</span>
+            </button>
+          </li>
+          <li>
+            <button
+              class="filter-btn w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 text-gray-600 hover:bg-gray-100"
+              data-category="esmeraldas"
+              aria-pressed="false"
+            >
+              <span data-i18n="filter_emeralds">Esmeraldas</span> <span class="text-xs opacity-70">({{ esmeraldas_count }})</span>
+            </button>
+          </li>
         </ul>
 
         <!-- Price filter -->
@@ -131,7 +161,7 @@
       </div>
       <div id="no-results" class="hidden text-center text-gray-400 py-12 text-sm" data-i18n="no_results">No se encontraron productos.</div>
       <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      {% assign categories = "aretes,dijes,anillos,collares,bolsas,arracadas,ear_cuff" | split: "," %}
+      {% assign categories = "aretes,dijes,anillos,collares,bolsas,arracadas,ear_cuff,pulseras,tobilleras,esmeraldas" | split: "," %}
       {% for cat in categories %}
         {% assign items = site.data[cat] %}
         {% for item in items %}
