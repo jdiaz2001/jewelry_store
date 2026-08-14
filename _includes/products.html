@@ -7,14 +7,14 @@
     {% assign aretes_count = site.data.aretes | size %}
     {% assign dijes_count = site.data.dijes | size %}
     {% assign anillos_count = site.data.anillos | size %}
-    {% assign collares_count = site.data.collares | size %}
+    {% assign cadenas_count = site.data.cadenas | size %}
     {% assign bolsas_count = site.data.bolsas | size %}
     {% assign arracadas_count = site.data.arracadas | size %}
     {% assign ear_cuff_count = site.data.ear_cuff | size %}
     {% assign pulseras_count = site.data.pulseras | size %}
     {% assign tobilleras_count = site.data.tobilleras | size %}
     {% assign esmeraldas_count = site.data.esmeraldas | size %}
-    {% assign total = aretes_count | plus: dijes_count | plus: anillos_count | plus: collares_count | plus: bolsas_count | plus: arracadas_count | plus: ear_cuff_count | plus: pulseras_count | plus: tobilleras_count | plus: esmeraldas_count %}
+    {% assign total = aretes_count | plus: dijes_count | plus: anillos_count | plus: cadenas_count | plus: bolsas_count | plus: arracadas_count | plus: ear_cuff_count | plus: pulseras_count | plus: tobilleras_count | plus: esmeraldas_count %}
 
     <!-- Sidebar filters -->
     <aside class="w-full md:w-56 shrink-0">
@@ -60,10 +60,10 @@
           <li>
             <button
               class="filter-btn w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 text-gray-600 hover:bg-gray-100"
-              data-category="collares"
+              data-category="cadenas"
               aria-pressed="false"
             >
-              <span data-i18n="filter_necklaces">Collares</span> <span class="text-xs opacity-70">({{ collares_count }})</span>
+              <span data-i18n="filter_chains">Cadenas</span> <span class="text-xs opacity-70">({{ cadenas_count }})</span>
             </button>
           </li>
           <li>
@@ -161,7 +161,7 @@
       </div>
       <div id="no-results" class="hidden text-center text-gray-400 py-12 text-sm" data-i18n="no_results">No se encontraron productos.</div>
       <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      {% assign categories = "aretes,dijes,anillos,collares,bolsas,arracadas,ear_cuff,pulseras,tobilleras,esmeraldas" | split: "," %}
+      {% assign categories = "aretes,dijes,anillos,cadenas,bolsas,arracadas,ear_cuff,pulseras,tobilleras,esmeraldas" | split: "," %}
       {% for cat in categories %}
         {% assign items = site.data[cat] %}
         {% for item in items %}
