@@ -1,21 +1,26 @@
-# IDE / Editor
-.kiro/
-.vscode/
-
-# macOS
-.DS_Store
-Thumbs.db
-
 # Jekyll build output
 _site/
-
-# Jekyll cache
 .jekyll-cache/
 .jekyll-metadata
 
 # Ruby / Bundler
-vendor/
 .bundle/
+vendor/bundle/
+vendor/cache/
+.bundle/config
+Gemfile.lock
 
-# Environment variables
-.env
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editor
+.vscode/
+.idea/
+.kiro/
+*.swp
+*.swo
+
+# Logs
+*.log

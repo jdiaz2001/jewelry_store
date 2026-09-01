@@ -1,4 +1,36 @@
-title: ivilier Jewelry
+# ── Site identity ─────────────────────────────────────────────────────────────
+title: "ivilier Joyería"
 description: "Joyería con estilo — aretes, dijes y anillos. Piezas únicas para cada ocasión."
 baseurl: ""
 url: "https://catalogo.ivilier.com"
+
+# ── Social Media Links ────────────────────────────────────────────────────────
+social:
+  facebook: "https://www.facebook.com/people/Evelyn-Monroy/61589745431205/"
+  instagram: "https://www.instagram.com/ivilier.original/"
+  tiktok: "https://www.tiktok.com/@ivilier.original?_r=1&_t=ZT-99LugGTJVaX"
+
+# ── Build settings ────────────────────────────────────────────────────────────
+markdown: kramdown
+lang: es
+timezone: America/Mexico_City
+
+# ── Plugins ───────────────────────────────────────────────────────────────────
+plugins:
+  - jekyll-sitemap
+
+# ── Permalink style ───────────────────────────────────────────────────────────
+permalink: pretty
+
+# ── Exclude from build output ─────────────────────────────────────────────────
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - prompt.md
+  - _docs/
+  - .github/
+  - .gitignore
+  - vendor/
+  - node_modules/
+  - "*.sh"

@@ -1,17 +1,1049 @@
 ---
 layout: default
-title: Catálogo
+title: "Catálogo"
+description: "Catálogo de joyería fina, accesorios y gestión de caja e inventario."
 ---
 
-<!-- Hero banner -->
-<section class="relative bg-gradient-to-r from-gray-400 to-gray-300 text-white">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 flex flex-col items-center text-center gap-4">
-    <h1 class="text-4xl sm:text-5xl font-bold tracking-tight" data-i18n="hero_title">Joyería con estilo</h1>
-    <p class="text-lg sm:text-xl text-gray-100 max-w-xl" data-i18n="hero_subtitle">Descubre nuestra colección de aretes, dijes y anillos. Piezas únicas para cada ocasión.</p>
-    <a href="#catalog" class="mt-4 inline-block bg-white text-gray-700 font-semibold px-6 py-3 rounded-lg hover:bg-gray-50 transition-colors" data-i18n="hero_cta">
-      Ver catálogo
-    </a>
+<!-- ════════════════════════════════════════════════════════════════════════════
+     SECTION 1 — PUBLIC STORE CATALOG (Original Design & Palette)
+     ════════════════════════════════════════════════════════════════════════════ -->
+<section id="section-catalog" class="animate-fade-in">
+
+  <!-- Hero banner -->
+  <div class="relative bg-gradient-to-r from-gray-400 to-gray-300 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 flex flex-col items-center text-center gap-4">
+      <h1 class="text-4xl sm:text-5xl font-bold tracking-tight" data-i18n="hero_title">Joyería con estilo</h1>
+      <p class="text-lg sm:text-xl text-gray-100 max-w-xl" data-i18n="hero_subtitle">Descubre nuestra colección de aretes, dijes y anillos. Piezas únicas para cada ocasión.</p>
+      <a href="#catalog" class="mt-4 inline-block bg-white text-gray-700 font-semibold px-6 py-3 rounded-lg hover:bg-gray-50 transition-colors shadow-sm" data-i18n="hero_cta">
+        Ver catálogo
+      </a>
+    </div>
   </div>
+
+  <!-- Store Catalog with Filters & Products -->
+  {% include products.html %}
+
 </section>
 
-{% include products.html %}
+
+<!-- ════════════════════════════════════════════════════════════════════════════
+     SECTION 2 — OWNER MANAGEMENT PANEL (Adapted to Original Store Colors)
+     ════════════════════════════════════════════════════════════════════════════ -->
+<section id="section-panel" class="hidden max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 animate-fade-in">
+
+  <!-- ── PIN Gate ─────────────────────────────────────────────────────────── -->
+  <div id="pin-gate" class="min-h-[55vh] flex items-center justify-center">
+    <div class="bg-white rounded-2xl shadow-md border border-gray-200 p-8 sm:p-10 w-full max-w-sm text-center">
+
+      <!-- Lock Icon -->
+      <div class="w-16 h-16 rounded-2xl bg-gray-100 border border-gray-200 flex items-center justify-center mx-auto mb-5 text-2xl text-gray-700">
+        🔒
+      </div>
+
+      <!-- Lockout Notice Banner (shown during 15-minute lock) -->
+      <div id="pin-lockout-banner" class="hidden mb-5 p-4 rounded-xl bg-red-50 border border-red-200 text-center animate-fade-in">
+        <div class="flex items-center justify-center gap-2 text-red-600 font-bold text-sm mb-1">
+          <span class="animate-pulse">⏳</span>
+          <span data-i18n="lbl_lockout_title">Acceso Bloqueado</span>
+        </div>
+        <p class="text-xs text-red-600 mb-2" data-i18n="lbl_lockout_desc">
+          Demasiados intentos fallidos. Podrás intentar de nuevo en:
+        </p>
+        <div class="inline-flex items-center justify-center px-4 py-1.5 rounded-lg bg-red-100/90 border border-red-300 text-red-700 font-mono font-bold text-lg tracking-wider" id="pin-countdown-display">
+          14:59
+        </div>
+      </div>
+
+      <!-- Ready Notice Banner (shown when lockout expires) -->
+      <div id="pin-ready-banner" class="hidden mb-4 p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-center text-xs font-semibold text-emerald-700" data-i18n="lbl_unlock_ready">
+        ✓ El bloqueo ha finalizado. Ya puedes ingresar tu PIN.
+      </div>
+
+      <p class="text-gray-600 text-sm mb-5 font-medium leading-relaxed" data-i18n="pin_prompt">
+        Ingresa tu PIN para acceder al panel
+      </p>
+
+      <!-- PIN input -->
+      <input id="pin-input"
+        type="password"
+        maxlength="64"
+        autocomplete="current-password"
+        class="w-full bg-white border border-gray-300 rounded-xl px-4 py-3
+               text-gray-800 text-center text-xl font-mono tracking-[0.25em]
+               focus:outline-none focus:ring-2 focus:ring-gray-400 focus:border-gray-400 mb-2"
+        data-i18n-placeholder="pin_placeholder"
+        placeholder="PIN de acceso"
+        onkeydown="if(event.key === 'Enter') unlockPanel()" />
+
+      <!-- Error message -->
+      <p id="pin-error" class="text-red-500 text-xs mb-4 min-h-[1rem] transition-opacity opacity-0">
+        ⚠ PIN incorrecto o no autorizado
+      </p>
+
+      <!-- Unlock button -->
+      <button id="pin-btn" onclick="unlockPanel()"
+        class="w-full bg-gray-800 hover:bg-gray-900 active:scale-[0.98] text-white
+               font-semibold py-3.5 rounded-xl shadow-sm transition-all duration-150 flex items-center justify-center gap-2">
+        <span id="pin-btn-text" data-i18n="pin_unlock">Desbloquear</span>
+        <span id="pin-spinner" class="spinner hidden"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ── Panel Content (revealed after PIN) ────────────────────────────────── -->
+  <div id="panel-content" class="hidden space-y-8 animate-slide-up">
+
+    <!-- Panel header -->
+    <div class="flex items-center justify-between">
+      <h2 class="text-2xl sm:text-3xl font-bold text-gray-800" data-i18n="panel_title">Panel de Gestión</h2>
+      <button onclick="lockPanel()"
+        class="flex items-center gap-1.5 text-xs text-gray-600 hover:text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 px-3 py-2 rounded-lg font-medium shadow-sm transition-colors">
+        <span>🔒</span>
+        <span data-i18n="lbl_lock">Bloquear</span>
+      </button>
+    </div>
+
+    <!-- Panel Tab Switcher (Comentado: solo contabilidad activa) -->
+    <!--
+    <div class="flex gap-2 p-1 bg-gray-200/80 rounded-xl w-fit border border-gray-300">
+      <button id="tab-btn-accounting" onclick="switchPanelTab('accounting')"
+        class="panel-tab-btn active-panel-tab px-5 py-2.5 rounded-lg text-sm font-semibold transition-all duration-150">
+        <span data-i18n="panel_accounting">Contabilidad</span>
+      </button>
+      <button id="tab-btn-inventory" onclick="switchPanelTab('inventory')"
+        class="panel-tab-btn px-5 py-2.5 rounded-lg text-sm font-semibold text-gray-600 hover:text-gray-900 hover:bg-gray-200 transition-all duration-150">
+        <span data-i18n="panel_inventory">Inventario</span>
+      </button>
+    </div>
+    -->
+
+    <!-- ══ ACCOUNTING TAB ════════════════════════════════════════════════ -->
+    <div id="tab-accounting" class="panel-tab-content space-y-6">
+
+      <!-- Live Cash Balance Summary Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="bg-white rounded-2xl p-5 border border-emerald-200 shadow-sm">
+          <p class="text-xs font-bold text-emerald-700 uppercase tracking-wider mb-1" data-i18n="lbl_total_in">Ingresos (Entradas)</p>
+          <p id="acc-sum-in" class="text-2xl sm:text-3xl font-bold text-emerald-800 tabular-nums">$0.00</p>
+        </div>
+        <div class="bg-white rounded-2xl p-5 border border-red-200 shadow-sm">
+          <p class="text-xs font-bold text-red-600 uppercase tracking-wider mb-1" data-i18n="lbl_total_out">Egresos (Salidas)</p>
+          <p id="acc-sum-out" class="text-2xl sm:text-3xl font-bold text-red-700 tabular-nums">$0.00</p>
+        </div>
+        <div class="bg-white rounded-2xl p-5 border border-gray-200 shadow-sm">
+          <p class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1" data-i18n="lbl_net_balance">Balance Neto en Caja</p>
+          <p id="acc-sum-balance" class="text-2xl sm:text-3xl font-extrabold text-gray-800 tabular-nums">$0.00</p>
+        </div>
+      </div>
+
+      <!-- Accounting Form Card -->
+      <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-md border border-gray-200">
+        <h3 class="text-lg font-bold text-gray-800 mb-6 flex items-center gap-2">
+          <span>💰</span>
+          <span data-i18n="acc_title">Registrar Movimiento de Caja</span>
+        </h3>
+
+        <form id="accounting-form" onsubmit="submitAccounting(event)" novalidate autocomplete="off">
+
+          <!-- Honeypot anti-spam field -->
+          <input type="text" name="_hp" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true" />
+
+          <!-- Direction -->
+          <fieldset class="mb-5">
+            <legend class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-3" data-i18n="form_direction">Dirección</legend>
+            <div class="grid grid-cols-2 gap-3">
+              <label class="dir-card dir-in flex items-center gap-3 p-4 rounded-xl border-2 border-gray-200 bg-white cursor-pointer hover:border-gray-300 transition-all duration-150">
+                <input type="radio" name="acc-direction" value="IN" class="sr-only" />
+                <span class="w-8 h-8 rounded-lg bg-emerald-100 flex items-center justify-center text-emerald-700 text-lg flex-shrink-0 font-bold">↑</span>
+                <span class="text-sm font-semibold text-gray-800" data-i18n="form_money_in">Dinero Entra</span>
+              </label>
+
+              <label class="dir-card dir-out flex items-center gap-3 p-4 rounded-xl border-2 border-gray-200 bg-white cursor-pointer hover:border-gray-300 transition-all duration-150">
+                <input type="radio" name="acc-direction" value="OUT" class="sr-only" />
+                <span class="w-8 h-8 rounded-lg bg-red-100 flex items-center justify-center text-red-600 text-lg flex-shrink-0 font-bold">↓</span>
+                <span class="text-sm font-semibold text-gray-800" data-i18n="form_money_out">Dinero Sale</span>
+              </label>
+            </div>
+            <p id="acc-direction-err" class="err-msg text-red-500 text-xs mt-2 hidden" data-i18n="err_required">Este campo es obligatorio.</p>
+          </fieldset>
+
+          <!-- Amount -->
+          <div class="mb-5">
+            <label for="acc-amount" class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2" data-i18n="form_amount">Monto</label>
+            <div class="relative">
+              <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 font-bold select-none">$</span>
+              <input type="number" id="acc-amount" name="acc-amount" min="0.01" step="0.01"
+                class="w-full bg-white border border-gray-300 rounded-xl pl-9 pr-4 py-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-400 transition-colors"
+                placeholder="0.00" />
+            </div>
+            <p id="acc-amount-err" class="err-msg text-red-500 text-xs mt-2 hidden" data-i18n="err_amount">El monto debe ser mayor a 0.</p>
+          </div>
+
+          <!-- Description -->
+          <div class="mb-5">
+            <label for="acc-desc" class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2" data-i18n="form_description">Descripción</label>
+            <input type="text" id="acc-desc" name="acc-desc" maxlength="200"
+              class="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-400 transition-colors"
+              data-i18n-placeholder="form_description" placeholder="Descripción" />
+            <p id="acc-desc-err" class="err-msg text-red-500 text-xs mt-2 hidden" data-i18n="err_required">Este campo es obligatorio.</p>
+          </div>
+
+          <!-- Date -->
+          <div class="mb-8">
+            <label for="acc-date" class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2" data-i18n="form_date">Fecha</label>
+            <input type="date" id="acc-date" name="acc-date"
+              class="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-400 transition-colors" />
+            <p id="acc-date-err" class="err-msg text-red-500 text-xs mt-2 hidden" data-i18n="err_required">Este campo es obligatorio.</p>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" id="acc-submit-btn"
+            class="w-full bg-gray-800 hover:bg-gray-900 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold py-3.5 rounded-xl shadow-sm transition-all duration-150 active:scale-[0.99] flex items-center justify-center gap-2">
+            <span id="acc-btn-text" data-i18n="form_submit">Registrar</span>
+            <span id="acc-spinner" class="spinner hidden"></span>
+          </button>
+
+        </form>
+      </div>
+
+      <!-- Recent Accounting Movements List -->
+      <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-md border border-gray-200">
+        <div class="flex items-center justify-between mb-5">
+          <h3 class="text-base font-bold text-gray-800 flex items-center gap-2">
+            <span>📋</span>
+            <span data-i18n="lbl_recent_transactions">Últimos Movimientos de Caja</span>
+          </h3>
+          <button type="button" onclick="fetchAccountingHistory()"
+            class="flex items-center gap-1.5 text-xs text-gray-700 hover:text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 px-3 py-1.5 rounded-lg font-semibold transition-colors shadow-sm">
+            <span>↻</span>
+            <span data-i18n="lbl_refresh">Actualizar</span>
+          </button>
+        </div>
+
+        <div id="acc-history-container" class="space-y-2.5">
+          <div class="text-center py-6 text-gray-400 text-sm" data-i18n="lbl_loading_records">Cargando historial...</div>
+        </div>
+      </div>
+
+    </div><!-- /#tab-accounting -->
+
+    <!-- ══ INVENTORY TAB (Comentado / Deshabilitado temporalmente) ═════════════════ -->
+    <!--
+    <div id="tab-inventory" class="panel-tab-content hidden space-y-6">
+
+      <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-md border border-gray-200">
+        <h3 class="text-lg font-bold text-gray-800 mb-6 flex items-center gap-2">
+          <span>📦</span>
+          <span data-i18n="inv_title">Registrar Movimiento de Inventario</span>
+        </h3>
+
+        <form id="inventory-form" onsubmit="submitInventory(event)" novalidate autocomplete="off">
+
+          <input type="text" name="_hp" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true" />
+
+          <fieldset class="mb-5">
+            <legend class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-3" data-i18n="form_direction">Dirección</legend>
+            <div class="grid grid-cols-2 gap-3">
+              <label class="dir-card dir-in flex items-center gap-3 p-4 rounded-xl border-2 border-gray-200 bg-white cursor-pointer hover:border-gray-300 transition-all duration-150">
+                <input type="radio" name="inv-direction" value="IN" class="sr-only" />
+                <span class="w-8 h-8 rounded-lg bg-emerald-100 flex items-center justify-center text-emerald-700 text-lg flex-shrink-0 font-bold">↑</span>
+                <span class="text-sm font-semibold text-gray-800" data-i18n="inv_product_in">Producto Entra</span>
+              </label>
+
+              <label class="dir-card dir-out flex items-center gap-3 p-4 rounded-xl border-2 border-gray-200 bg-white cursor-pointer hover:border-gray-300 transition-all duration-150">
+                <input type="radio" name="inv-direction" value="OUT" class="sr-only" />
+                <span class="w-8 h-8 rounded-lg bg-red-100 flex items-center justify-center text-red-600 text-lg flex-shrink-0 font-bold">↓</span>
+                <span class="text-sm font-semibold text-gray-800" data-i18n="inv_product_out">Producto Sale</span>
+              </label>
+            </div>
+            <p id="inv-direction-err" class="err-msg text-red-500 text-xs mt-2 hidden" data-i18n="err_required">Este campo es obligatorio.</p>
+          </fieldset>
+
+          <div class="mb-4">
+            <div class="flex items-center justify-between mb-2">
+              <label for="inv-product" class="block text-xs font-bold text-gray-500 uppercase tracking-wider" data-i18n="inv_product">Producto</label>
+              <span id="inv-stock-indicator" class="hidden text-xs font-semibold px-2.5 py-0.5 rounded-full bg-gray-100 text-gray-800 border border-gray-200">
+                <span data-i18n="lbl_stock_available">Stock disponible:</span> <span id="inv-stock-val" class="font-bold">0</span> <span data-i18n="lbl_units">unidades</span>
+              </span>
+            </div>
+            {% assign categories = "aretes,dijes,anillos,cadenas,bolsas,arracadas,ear_cuff,pulseras,tobilleras,esmeraldas" | split: "," %}
+            <select id="inv-product" name="inv-product" onchange="updateSelectedProductStock(this.value)"
+              class="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-400 transition-colors">
+              <option value="" disabled selected>— Selecciona un producto —</option>
+              {% for cat in categories %}
+                {% assign items = site.data[cat] %}
+                {% for item in items %}
+                  <option value="{{ item.ref_code }}"
+                          data-desc="{{ item.description | escape }}"
+                          data-price="{{ item.price }}"
+                          data-cat="{{ cat }}"
+                          data-img="{{ '/images/' | append: cat | append: '/' | append: item.ref_code | append: '.jpg' | relative_url }}">
+                    [{{ item.ref_code }}] {{ item.description }} ({{ item.price }})
+                  </option>
+                {% endfor %}
+              {% endfor %}
+            </select>
+            <p id="inv-product-err" class="err-msg text-red-500 text-xs mt-2 hidden" data-i18n="err_required">Este campo es obligatorio.</p>
+          </div>
+
+          <div id="inv-preview-card" class="hidden mb-5 p-4 rounded-xl bg-gray-50 border border-gray-200 flex items-center gap-4 transition-all animate-fade-in">
+            <div class="w-16 h-16 rounded-xl overflow-hidden bg-gray-200 flex-shrink-0 border border-gray-300 shadow-sm flex items-center justify-center">
+              <img id="inv-preview-img" src="" alt="Producto" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='data:image/svg+xml,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'64\' height=\'64\' viewBox=\'0 0 64 64\'><rect width=\'64\' height=\'64\' fill=\'%23f3f4f6\'/><text x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-size=\'24\'>💎</text></svg>';" />
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-2 mb-1">
+                <span id="inv-preview-code" class="font-mono text-xs font-bold text-gray-700 bg-white px-2 py-0.5 rounded border border-gray-200"></span>
+                <span id="inv-preview-cat" class="text-[10px] uppercase font-bold text-gray-500 bg-gray-200/80 px-2 py-0.5 rounded"></span>
+              </div>
+              <p id="inv-preview-desc" class="text-sm font-semibold text-gray-800 truncate"></p>
+              <div class="flex items-center gap-3 mt-1 text-xs">
+                <span id="inv-preview-price" class="font-extrabold text-gray-900"></span>
+                <span id="inv-preview-stock-badge" class="font-semibold px-2 py-0.5 rounded-md text-[11px]"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-5">
+            <label for="inv-qty" class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2" data-i18n="inv_quantity">Cantidad</label>
+            <input type="number" id="inv-qty" name="inv-qty" min="1" step="1"
+              class="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-400 transition-colors"
+              placeholder="1" />
+            <p id="inv-qty-err" class="err-msg text-red-500 text-xs mt-2 hidden" data-i18n="err_quantity">La cantidad debe ser mayor a 0.</p>
+          </div>
+
+          <div class="mb-5">
+            <label for="inv-notes" class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2" data-i18n="inv_notes">Notas</label>
+            <textarea id="inv-notes" name="inv-notes" rows="2" maxlength="300"
+              class="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-400 transition-colors resize-none"
+              data-i18n-placeholder="inv_notes" placeholder="Notas"></textarea>
+          </div>
+
+          <div class="mb-8">
+            <label for="inv-date" class="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2" data-i18n="form_date">Fecha</label>
+            <input type="date" id="inv-date" name="inv-date"
+              class="w-full bg-white border border-gray-300 rounded-xl px-4 py-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-400 transition-colors" />
+            <p id="inv-date-err" class="err-msg text-red-500 text-xs mt-2 hidden" data-i18n="err_required">Este campo es obligatorio.</p>
+          </div>
+
+          <button type="submit" id="inv-submit-btn"
+            class="w-full bg-gray-800 hover:bg-gray-900 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold py-3.5 rounded-xl shadow-sm transition-all duration-150 active:scale-[0.99] flex items-center justify-center gap-2">
+            <span id="inv-btn-text" data-i18n="form_submit">Registrar</span>
+            <span id="inv-spinner" class="spinner hidden"></span>
+          </button>
+
+        </form>
+      </div>
+
+      <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-md border border-gray-200">
+        <div class="flex items-center justify-between mb-5">
+          <h3 class="text-base font-bold text-gray-800 flex items-center gap-2">
+            <span>📦</span>
+            <span data-i18n="lbl_recent_inventory">Últimos Movimientos de Stock</span>
+          </h3>
+          <button type="button" onclick="fetchInventoryHistory()"
+            class="flex items-center gap-1.5 text-xs text-gray-700 hover:text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 px-3 py-1.5 rounded-lg font-semibold transition-colors shadow-sm">
+            <span>↻</span>
+            <span data-i18n="lbl_refresh">Actualizar</span>
+          </button>
+        </div>
+
+        <div id="inv-history-container" class="space-y-2.5">
+          <div class="text-center py-6 text-gray-400 text-sm" data-i18n="lbl_loading_records">Cargando historial...</div>
+        </div>
+      </div>
+
+    </div>
+    -->
+
+  </div><!-- /#panel-content -->
+
+</section><!-- /#section-panel -->
+
+
+<!-- ════════════════════════════════════════════════════════════════════════════
+     PAGE-LEVEL SCRIPTS (Authentication, Accounting & Inventory API Handlers)
+     ════════════════════════════════════════════════════════════════════════════ -->
+<style>
+  .active-panel-tab {
+    background-color: #1f2937 !important;
+    color: #ffffff !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+</style>
+
+<script>
+  var cachedStockSummary = {};
+  var _lockCountdownInterval = null;
+
+  function startLockCountdown(seconds) {
+    var banner       = document.getElementById("pin-lockout-banner");
+    var readyBanner  = document.getElementById("pin-ready-banner");
+    var display      = document.getElementById("pin-countdown-display");
+    var errEl        = document.getElementById("pin-error");
+    var input        = document.getElementById("pin-input");
+    var btn          = document.getElementById("pin-btn");
+    var btnText      = document.getElementById("pin-btn-text");
+    var spinner      = document.getElementById("pin-spinner");
+
+    var durationSecs = typeof seconds === "number" && seconds > 0 ? seconds : 900;
+    var lockUntil    = Date.now() + (durationSecs * 1000);
+    try { sessionStorage.setItem("auth_lock_until", String(lockUntil)); } catch(e) {}
+
+    if (banner) banner.classList.remove("hidden");
+    if (readyBanner) readyBanner.classList.add("hidden");
+    if (errEl) errEl.style.opacity = "0";
+
+    if (input) {
+      input.disabled = true;
+      input.value = "";
+      input.classList.add("bg-gray-100", "cursor-not-allowed", "opacity-60");
+    }
+    if (btn) {
+      btn.disabled = true;
+      btn.classList.add("opacity-50", "cursor-not-allowed");
+      if (btnText) btnText.textContent = t("pin_unlock");
+      if (spinner) spinner.classList.add("hidden");
+    }
+
+    clearInterval(_lockCountdownInterval);
+
+    function updateCountdown() {
+      var remaining = Math.max(0, Math.ceil((lockUntil - Date.now()) / 1000));
+      if (remaining <= 0) {
+        clearInterval(_lockCountdownInterval);
+        try { sessionStorage.removeItem("auth_lock_until"); } catch(e) {}
+        if (banner) banner.classList.add("hidden");
+        if (readyBanner) readyBanner.classList.remove("hidden");
+        if (input) {
+          input.disabled = false;
+          input.classList.remove("bg-gray-100", "cursor-not-allowed", "opacity-60");
+          input.value = "";
+          setTimeout(function() { input.focus(); }, 100);
+        }
+        if (btn) {
+          btn.disabled = false;
+          btn.classList.remove("opacity-50", "cursor-not-allowed");
+        }
+        return;
+      }
+
+      var mins = Math.floor(remaining / 60);
+      var secs = remaining % 60;
+      var timeStr = (mins < 10 ? "0" : "") + mins + ":" + (secs < 10 ? "0" : "") + secs;
+
+      if (display) display.textContent = timeStr;
+    }
+
+    updateCountdown();
+    _lockCountdownInterval = setInterval(updateCountdown, 1000);
+  }
+
+  function checkExistingLockout() {
+    try {
+      var lockUntilStr = sessionStorage.getItem("auth_lock_until");
+      if (lockUntilStr) {
+        var lockUntil = parseInt(lockUntilStr, 10);
+        var remaining = Math.ceil((lockUntil - Date.now()) / 1000);
+        if (remaining > 0) {
+          startLockCountdown(remaining);
+        } else {
+          sessionStorage.removeItem("auth_lock_until");
+        }
+      }
+    } catch(e) {}
+  }
+
+  document.addEventListener("DOMContentLoaded", function() {
+    checkExistingLockout();
+  });
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // PIN AUTHENTICATION GATE (Server-validated)
+  // ─────────────────────────────────────────────────────────────────────────
+  async function unlockPanel() {
+    var input   = document.getElementById("pin-input");
+    var errEl   = document.getElementById("pin-error");
+    var btn     = document.getElementById("pin-btn");
+    var btnText = document.getElementById("pin-btn-text");
+    var spinner = document.getElementById("pin-spinner");
+    var pin     = (input.value || "").trim();
+
+    if (!pin) {
+      errEl.className = "text-red-500 text-xs mb-4 min-h-[1rem] transition-opacity opacity-100";
+      errEl.textContent = t("err_required");
+      input.focus();
+      return;
+    }
+
+    btn.disabled = true;
+    if (btnText) btnText.textContent = t("pin_verifying");
+    if (spinner) spinner.classList.remove("hidden");
+    errEl.style.opacity = "0";
+
+    try {
+      var testUrl = SCRIPT_URLS.accounting + (SCRIPT_URLS.accounting.includes("?") ? "&" : "?") +
+                    "limit=1&auth=" + encodeURIComponent(pin);
+      var res  = await fetch(testUrl, { method: "GET", redirect: "follow" });
+      var data = await res.json();
+
+      if (data.status === "ok") {
+        clearInterval(_lockCountdownInterval);
+        try { sessionStorage.removeItem("auth_lock_until"); } catch(e) {}
+        setAuthToken(pin);
+        document.getElementById("pin-gate").classList.add("hidden");
+        document.getElementById("panel-content").classList.remove("hidden");
+        input.value = "";
+        errEl.style.opacity = "0";
+
+        if (typeof updateNavPanelVisibility === "function") updateNavPanelVisibility();
+        if (typeof resetInactivityTimer === "function") resetInactivityTimer();
+
+        // Load initial history and summaries
+        fetchAccountingHistory();
+        fetchInventoryHistory();
+      } else {
+        clearAuthToken();
+        if (typeof updateNavPanelVisibility === "function") updateNavPanelVisibility();
+
+        if (data.status === "locked") {
+          var remaining = data.remainingSecs || 900;
+          startLockCountdown(remaining);
+        } else {
+          var msg = "";
+          if (data.attemptsLeft !== undefined && data.attemptsLeft !== null) {
+            if (data.attemptsLeft === 1) {
+              msg = t("err_last_attempt");
+            } else if (data.attemptsLeft > 1) {
+              var tpl = t("err_attempts_remaining") || "⚠ Contraseña incorrecta. Te quedan {count} intentos antes del bloqueo.";
+              msg = tpl.replace("{count}", data.attemptsLeft);
+            } else {
+              msg = data.message || t("pin_error");
+            }
+          } else {
+            msg = data.message || t("pin_error");
+          }
+
+          errEl.textContent = msg;
+          errEl.style.opacity = "1";
+          errEl.className = "text-red-500 text-xs font-medium mb-4 min-h-[1rem] transition-opacity opacity-100";
+          input.value = "";
+          input.focus();
+          input.style.transform = "translateX(-4px)";
+          setTimeout(function() { input.style.transform = "translateX(4px)"; }, 60);
+          setTimeout(function() { input.style.transform = ""; }, 120);
+        }
+      }
+    } catch (err) {
+      console.warn("Authentication request failed:", err);
+      errEl.style.opacity = "1";
+      errEl.className = "text-red-500 text-xs font-medium mb-4 min-h-[1rem] transition-opacity opacity-100";
+      errEl.textContent = t("error_msg");
+    } finally {
+      var isStillLocked = false;
+      try {
+        var lockUntilStr = sessionStorage.getItem("auth_lock_until");
+        if (lockUntilStr && parseInt(lockUntilStr, 10) > Date.now()) isStillLocked = true;
+      } catch(e) {}
+
+      if (!isStillLocked) {
+        btn.disabled = false;
+        if (btnText) btnText.textContent = t("pin_unlock");
+        if (spinner) spinner.classList.add("hidden");
+      }
+    }
+  }
+
+  function lockPanel() {
+    clearAuthToken();
+    if (typeof updateNavPanelVisibility === "function") updateNavPanelVisibility();
+    var pinGate = document.getElementById("pin-gate");
+    var panelContent = document.getElementById("panel-content");
+    if (pinGate) pinGate.classList.remove("hidden");
+    if (panelContent) panelContent.classList.add("hidden");
+    var input = document.getElementById("pin-input");
+    if (input) input.value = "";
+    var errEl = document.getElementById("pin-error");
+    if (errEl) errEl.style.opacity = "0";
+  }
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // PANEL TAB SWITCHER
+  // ─────────────────────────────────────────────────────────────────────────
+  function switchPanelTab(tab) {
+    document.querySelectorAll(".panel-tab-content").forEach(function(el) {
+      el.classList.add("hidden");
+    });
+    document.querySelectorAll(".panel-tab-btn").forEach(function(btn) {
+      btn.classList.remove("active-panel-tab");
+      btn.classList.add("text-gray-600");
+      btn.classList.remove("text-white");
+    });
+
+    var activeContent = document.getElementById("tab-" + tab);
+    var activeBtn = document.getElementById("tab-btn-" + tab);
+    if (activeContent) activeContent.classList.remove("hidden");
+    if (activeBtn) {
+      activeBtn.classList.add("active-panel-tab");
+      activeBtn.classList.remove("text-gray-600");
+      activeBtn.classList.add("text-white");
+    }
+  }
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // DIRECTION RADIO CARDS STYLING FEEDBACK
+  // ─────────────────────────────────────────────────────────────────────────
+  document.querySelectorAll(".dir-card input[type='radio']").forEach(function(radio) {
+    radio.addEventListener("change", function() {
+      var group = this.closest("fieldset") || this.closest("div");
+      group.querySelectorAll(".dir-card").forEach(function(card) {
+        card.classList.remove("border-emerald-500", "bg-emerald-50", "border-red-500", "bg-red-50");
+        card.classList.add("border-gray-200", "bg-white");
+      });
+      var label = this.closest(".dir-card");
+      label.classList.remove("border-gray-200", "bg-white");
+      if (this.value === "IN") {
+        label.classList.add("border-emerald-500", "bg-emerald-50");
+      } else {
+        label.classList.add("border-red-500", "bg-red-50");
+      }
+    });
+  });
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // FORM HELPERS
+  // ─────────────────────────────────────────────────────────────────────────
+  function setErr(id, show) {
+    var el = document.getElementById(id);
+    if (el) el.classList.toggle("hidden", !show);
+  }
+
+  function setLoading(prefix, isLoading) {
+    var btn     = document.getElementById(prefix + "-submit-btn");
+    var spinner = document.getElementById(prefix + "-spinner");
+    var text    = document.getElementById(prefix + "-btn-text");
+    if (btn) btn.disabled = isLoading;
+    if (spinner) spinner.classList.toggle("hidden", !isLoading);
+    if (text) text.textContent = isLoading ? t("form_loading") : t("form_submit");
+  }
+
+  function resetDateField(id) {
+    var el = document.getElementById(id);
+    if (el) el.value = new Date().toISOString().split("T")[0];
+  }
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // ACCOUNTING HISTORY & BALANCE FETCHER
+  // ─────────────────────────────────────────────────────────────────────────
+  async function fetchAccountingHistory() {
+    var container = document.getElementById("acc-history-container");
+    if (!container) return;
+
+    var token = getAuthToken();
+    if (!token) {
+      lockPanel();
+      return;
+    }
+
+    container.innerHTML = '<div class="text-center py-4 text-gray-400 text-xs animate-pulse">' + t("lbl_loading_records") + '</div>';
+
+    try {
+      var url = SCRIPT_URLS.accounting + (SCRIPT_URLS.accounting.includes("?") ? "&" : "?") +
+                "limit=100&auth=" + encodeURIComponent(token);
+      var res = await fetch(url, { method: "GET", redirect: "follow" });
+      var data = await res.json();
+
+      if (data.status === "unauthorized") {
+        showToast(t("err_unauthorized"), true);
+        lockPanel();
+        return;
+      }
+
+      if (data.status === "ok") {
+        var totalIn = 0;
+        var totalOut = 0;
+        var netBalance = 0;
+
+        if (data.summary) {
+          totalIn = Number(data.summary.totalIn !== undefined ? data.summary.totalIn : 0);
+          totalOut = Number(data.summary.totalOut !== undefined ? data.summary.totalOut : 0);
+          netBalance = Number(data.summary.balance !== undefined ? data.summary.balance : (totalIn - totalOut));
+        } else if (data.rows && data.rows.length > 0) {
+          data.rows.forEach(function(row) {
+            var amt = parseFloat(row.Amount) || 0;
+            var dir = String(row.Direction || "").toUpperCase();
+            if (dir === "IN") {
+              totalIn += amt;
+            } else if (dir === "OUT") {
+              totalOut += amt;
+            }
+          });
+          netBalance = totalIn - totalOut;
+        }
+
+        var inEl = document.getElementById("acc-sum-in");
+        var outEl = document.getElementById("acc-sum-out");
+        var balEl = document.getElementById("acc-sum-balance");
+
+        if (inEl) inEl.textContent = "$" + totalIn.toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        if (outEl) outEl.textContent = "$" + totalOut.toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        if (balEl) {
+          balEl.textContent = "$" + netBalance.toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+          balEl.className = "text-2xl sm:text-3xl font-extrabold tabular-nums " + (netBalance >= 0 ? "text-emerald-700" : "text-red-600");
+        }
+
+        if (!data.rows || data.rows.length === 0) {
+          container.innerHTML = '<div class="text-center py-4 text-gray-400 text-xs">' + t("lbl_no_recent_records") + '</div>';
+          return;
+        }
+
+        var html = "";
+        var recentRows = data.rows.slice(0, 8);
+        recentRows.forEach(function(row) {
+          var isEntry = String(row.Direction || "").toUpperCase() === "IN";
+          var badgeCls = isEntry ? "text-emerald-700 bg-emerald-50 border-emerald-200" : "text-red-700 bg-red-50 border-red-200";
+          var sign = isEntry ? "+$" : "-$";
+          var amt = parseFloat(row.Amount) || 0;
+          var dateStr = (row.Date || "").split("T")[0];
+
+          html += '<div class="flex items-center justify-between p-3.5 rounded-xl bg-gray-50 border border-gray-200 text-xs sm:text-sm">' +
+                    '<div class="flex items-center gap-3 min-w-0">' +
+                      '<span class="px-2 py-1 rounded-md font-mono text-[10px] font-bold border ' + badgeCls + '">' +
+                        (isEntry ? "↑ ENTRADA" : "↓ SALIDA") +
+                      '</span>' +
+                      '<div class="truncate">' +
+                        '<p class="text-gray-800 font-semibold truncate">' + (row.Description || "—") + '</p>' +
+                        '<p class="text-[11px] text-gray-400 font-mono">' + dateStr + '</p>' +
+                      '</div>' +
+                    '</div>' +
+                    '<div class="text-right flex-shrink-0 font-bold tabular-nums ' + (isEntry ? "text-emerald-700" : "text-red-600") + '">' +
+                      sign + amt.toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) +
+                    '</div>' +
+                  '</div>';
+        });
+
+        container.innerHTML = html;
+      } else {
+        container.innerHTML = '<div class="text-center py-4 text-red-500 text-xs">' + t("error_msg") + '</div>';
+      }
+    } catch (err) {
+      console.warn("Accounting history fetch error:", err);
+      container.innerHTML = '<div class="text-center py-4 text-gray-400 text-xs">' + t("lbl_no_recent_records") + '</div>';
+    }
+  }
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // INVENTORY HISTORY & STOCK FETCHER
+  // ─────────────────────────────────────────────────────────────────────────
+  async function fetchInventoryHistory() {
+    var container = document.getElementById("inv-history-container");
+    if (!container) return;
+
+    var token = getAuthToken();
+    if (!token) {
+      lockPanel();
+      return;
+    }
+
+    container.innerHTML = '<div class="text-center py-4 text-gray-400 text-xs animate-pulse">' + t("lbl_loading_records") + '</div>';
+
+    try {
+      var url = SCRIPT_URLS.inventory + (SCRIPT_URLS.inventory.includes("?") ? "&" : "?") +
+                "limit=100&auth=" + encodeURIComponent(token);
+      var res = await fetch(url, { method: "GET", redirect: "follow" });
+      var data = await res.json();
+
+      if (data.status === "unauthorized") {
+        showToast(t("err_unauthorized"), true);
+        lockPanel();
+        return;
+      }
+
+      if (data.status === "ok") {
+        // Sincronizar catálogo dinámico si el backend devolvió productos
+        if (data.products && window.syncDynamicProducts) {
+          window.syncDynamicProducts(data.products);
+        }
+
+        if (data.stockSummary && Object.keys(data.stockSummary).length > 0) {
+          cachedStockSummary = data.stockSummary;
+        }
+
+        var productSelect = document.getElementById("inv-product");
+        if (productSelect && productSelect.value) {
+          updateSelectedProductStock(productSelect.value);
+        }
+
+        if (!data.rows || data.rows.length === 0) {
+          container.innerHTML = '<div class="text-center py-4 text-gray-400 text-xs">' + t("lbl_no_recent_records") + '</div>';
+          return;
+        }
+
+        var html = "";
+        var recentRows = data.rows.slice(0, 8);
+        recentRows.forEach(function(row) {
+          var isEntry = String(row.Direction || "").toUpperCase() === "IN";
+          var badgeCls = isEntry ? "text-emerald-700 bg-emerald-50 border-emerald-200" : "text-red-700 bg-red-50 border-red-200";
+          var sign = isEntry ? "+" : "-";
+          var code = row["Ref Code"] || row.ref_code || "";
+          var desc = row.Description || row.description || "—";
+          var qty = row.Quantity || row.quantity || 1;
+          var notes = row.Notes || row.notes || "";
+          var dateStr = (row.Date || "").split("T")[0];
+          var catKey = String(row.Category || row.category || "").toLowerCase();
+          var imgUrl = row.ImageUrl || row.Foto || row.Image || ("/images/" + catKey + "/" + code + ".jpg");
+
+          html += '<div class="flex items-center justify-between p-3.5 rounded-xl bg-gray-50 border border-gray-200 text-xs sm:text-sm">' +
+                    '<div class="flex items-center gap-3 min-w-0">' +
+                      '<div class="w-10 h-10 rounded-lg overflow-hidden bg-white border border-gray-200 flex-shrink-0 flex items-center justify-center">' +
+                        '<img src="' + imgUrl + '" alt="' + desc + '" class="w-full h-full object-cover" onerror="this.onerror=null; this.src=\'data:image/svg+xml,<svg xmlns=\\\'http://www.w3.org/2000/svg\\\' width=\\\'40\\\' height=\\\'40\\\' viewBox=\\\'0 0 40 40\\\'><rect width=\\\'40\\\' height=\\\'40\\\' fill=\\\'%23f3f4f6\\\'/><text x=\\\'50%25\\\' y=\\\'50%25\\\' dominant-baseline=\\\'middle\\\' text-anchor=\\\'middle\\\' font-size=\\\'18\\\'>💎</text></svg>\';" />' +
+                      '</div>' +
+                      '<span class="px-2 py-1 rounded-md font-mono text-[10px] font-bold border ' + badgeCls + '">' +
+                        (isEntry ? "↑ ENTRA" : "↓ SALE") +
+                      '</span>' +
+                      '<div class="truncate">' +
+                        '<p class="text-gray-800 font-semibold truncate"><span class="font-mono text-gray-500 mr-1">' + code + '</span> ' + desc + '</p>' +
+                        '<p class="text-[11px] text-gray-400 font-mono">' + dateStr + (notes ? " · " + notes : "") + '</p>' +
+                      '</div>' +
+                    '</div>' +
+                    '<div class="text-right flex-shrink-0 font-bold tabular-nums ' + (isEntry ? "text-emerald-700" : "text-red-600") + '">' +
+                      sign + qty + ' ' + t("lbl_units") +
+                    '</div>' +
+                  '</div>';
+        });
+
+        container.innerHTML = html;
+      } else {
+        container.innerHTML = '<div class="text-center py-4 text-red-500 text-xs">' + t("error_msg") + '</div>';
+      }
+    } catch (err) {
+      console.warn("Inventory history fetch error:", err);
+      container.innerHTML = '<div class="text-center py-4 text-gray-400 text-xs">' + t("lbl_no_recent_records") + '</div>';
+    }
+  }
+
+  function updateSelectedProductStock(refCode) {
+    var indicator = document.getElementById("inv-stock-indicator");
+    var valEl = document.getElementById("inv-stock-val");
+    var previewCard = document.getElementById("inv-preview-card");
+    var previewImg = document.getElementById("inv-preview-img");
+    var previewCode = document.getElementById("inv-preview-code");
+    var previewCat = document.getElementById("inv-preview-cat");
+    var previewDesc = document.getElementById("inv-preview-desc");
+    var previewPrice = document.getElementById("inv-preview-price");
+    var previewStockBadge = document.getElementById("inv-preview-stock-badge");
+
+    if (!refCode) {
+      if (indicator) indicator.classList.add("hidden");
+      if (previewCard) previewCard.classList.add("hidden");
+      return;
+    }
+
+    var code = String(refCode).trim().toUpperCase();
+    var stockObj = cachedStockSummary[code];
+    var currentStock = stockObj ? (stockObj.currentStock !== undefined ? stockObj.currentStock : 0) : 0;
+
+    if (valEl) valEl.textContent = currentStock;
+    if (indicator) {
+      indicator.classList.remove("hidden");
+      if (currentStock <= 0) {
+        indicator.className = "text-xs font-semibold px-2.5 py-0.5 rounded-full bg-red-50 text-red-700 border border-red-200";
+      } else {
+        indicator.className = "text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200";
+      }
+    }
+
+    // Actualizar tarjeta de previsualización en el panel
+    var select = document.getElementById("inv-product");
+    var opt = select ? select.options[select.selectedIndex] : null;
+    if (opt && previewCard) {
+      var desc = opt.dataset.desc || (stockObj ? stockObj.description : "") || code;
+      var price = opt.dataset.price || (stockObj ? stockObj.price : "") || "$0";
+      var cat = opt.dataset.cat || (stockObj ? stockObj.category : "") || "";
+      var img = opt.dataset.img || (stockObj ? stockObj.image : "") || ("/images/" + cat + "/" + code + ".jpg");
+
+      if (previewImg) previewImg.src = img;
+      if (previewCode) previewCode.textContent = code;
+      if (previewCat) previewCat.textContent = cat;
+      if (previewDesc) previewDesc.textContent = desc;
+      if (previewPrice) previewPrice.textContent = price.startsWith("$") ? price : "$" + price;
+      if (previewStockBadge) {
+        previewStockBadge.textContent = t("lbl_stock_available") + " " + currentStock + " " + t("lbl_units");
+        previewStockBadge.className = "font-semibold px-2 py-0.5 rounded-md text-[11px] " +
+          (currentStock > 0 ? "bg-emerald-100 text-emerald-800" : "bg-red-100 text-red-700");
+      }
+      previewCard.classList.remove("hidden");
+    }
+  }
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // ACCOUNTING FORM SUBMIT
+  // ─────────────────────────────────────────────────────────────────────────
+  function validateAccounting() {
+    var direction = document.querySelector("input[name='acc-direction']:checked");
+    var amount    = document.getElementById("acc-amount");
+    var desc      = document.getElementById("acc-desc");
+    var date      = document.getElementById("acc-date");
+    var ok = true;
+
+    setErr("acc-direction-err", !direction);
+    if (!direction) ok = false;
+
+    var amtVal = parseFloat(amount.value);
+    setErr("acc-amount-err", !amount.value || isNaN(amtVal) || amtVal <= 0);
+    if (!amount.value || isNaN(amtVal) || amtVal <= 0) ok = false;
+
+    setErr("acc-desc-err", !desc.value.trim());
+    if (!desc.value.trim()) ok = false;
+
+    setErr("acc-date-err", !date.value);
+    if (!date.value) ok = false;
+
+    return ok;
+  }
+
+  async function submitAccounting(e) {
+    e.preventDefault();
+    if (!validateAccounting()) return;
+
+    if (document.querySelector("#accounting-form input[name='_hp']").value) return;
+
+    var token = getAuthToken();
+    if (!token) {
+      showToast(t("err_unauthorized"), true);
+      lockPanel();
+      return;
+    }
+
+    setLoading("acc", true);
+
+    var payload = {
+      auth:        token,
+      direction:   document.querySelector("input[name='acc-direction']:checked").value,
+      amount:      document.getElementById("acc-amount").value,
+      description: document.getElementById("acc-desc").value.trim(),
+      date:        document.getElementById("acc-date").value,
+    };
+
+    try {
+      var res  = await fetch(SCRIPT_URLS.accounting, {
+        method:   "POST",
+        redirect: "follow",
+        body:     JSON.stringify(payload),
+      });
+      var data = await res.json();
+      if (data.status === "ok") {
+        showToast(t("success_msg"), false);
+        document.getElementById("accounting-form").reset();
+        document.querySelectorAll("#accounting-form .dir-card").forEach(function(c) {
+          c.classList.remove("border-emerald-500", "bg-emerald-50", "border-red-500", "bg-red-50");
+          c.classList.add("border-gray-200", "bg-white");
+        });
+        resetDateField("acc-date");
+        fetchAccountingHistory();
+      } else if (data.status === "unauthorized") {
+        showToast(t("err_unauthorized"), true);
+        lockPanel();
+      } else {
+        showToast(t("error_msg"), true);
+        console.error("Accounting error:", data.message);
+      }
+    } catch (err) {
+      showToast(t("error_msg"), true);
+      console.error("Accounting fetch error:", err);
+    } finally {
+      setLoading("acc", false);
+    }
+  }
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // INVENTORY FORM SUBMIT
+  // ─────────────────────────────────────────────────────────────────────────
+  function validateInventory() {
+    var direction = document.querySelector("input[name='inv-direction']:checked");
+    var product   = document.getElementById("inv-product");
+    var qty       = document.getElementById("inv-qty");
+    var date      = document.getElementById("inv-date");
+    var ok = true;
+
+    setErr("inv-direction-err", !direction);
+    if (!direction) ok = false;
+
+    setErr("inv-product-err", !product.value);
+    if (!product.value) ok = false;
+
+    var qtyVal = parseInt(qty.value, 10);
+    setErr("inv-qty-err", !qty.value || isNaN(qtyVal) || qtyVal < 1);
+    if (!qty.value || isNaN(qtyVal) || qtyVal < 1) ok = false;
+
+    setErr("inv-date-err", !date.value);
+    if (!date.value) ok = false;
+
+    return ok;
+  }
+
+  async function submitInventory(e) {
+    e.preventDefault();
+    if (!validateInventory()) return;
+
+    if (document.querySelector("#inventory-form input[name='_hp']").value) return;
+
+    var token = getAuthToken();
+    if (!token) {
+      showToast(t("err_unauthorized"), true);
+      lockPanel();
+      return;
+    }
+
+    setLoading("inv", true);
+
+    var productSelect  = document.getElementById("inv-product");
+    var selectedOption = productSelect.options[productSelect.selectedIndex];
+
+    var payload = {
+      auth:        token,
+      direction:   document.querySelector("input[name='inv-direction']:checked").value,
+      ref_code:    productSelect.value,
+      description: selectedOption.dataset.desc  || "",
+      price:       selectedOption.dataset.price || "",
+      category:    selectedOption.dataset.cat   || "",
+      image:       selectedOption.dataset.img   || "",
+      quantity:    document.getElementById("inv-qty").value,
+      notes:       document.getElementById("inv-notes").value.trim(),
+      date:        document.getElementById("inv-date").value,
+    };
+
+    try {
+      var res  = await fetch(SCRIPT_URLS.inventory, {
+        method:   "POST",
+        redirect: "follow",
+        body:     JSON.stringify(payload),
+      });
+      var data = await res.json();
+      if (data.status === "ok") {
+        showToast(t("success_msg"), false);
+        document.getElementById("inventory-form").reset();
+        document.querySelectorAll("#inventory-form .dir-card").forEach(function(c) {
+          c.classList.remove("border-emerald-500", "bg-emerald-50", "border-red-500", "bg-red-50");
+          c.classList.add("border-gray-200", "bg-white");
+        });
+        resetDateField("inv-date");
+        var indicator = document.getElementById("inv-stock-indicator");
+        if (indicator) indicator.classList.add("hidden");
+        var previewCard = document.getElementById("inv-preview-card");
+        if (previewCard) previewCard.classList.add("hidden");
+        fetchInventoryHistory();
+      } else if (data.status === "unauthorized") {
+        showToast(t("err_unauthorized"), true);
+        lockPanel();
+      } else {
+        showToast(t("error_msg"), true);
+        console.error("Inventory error:", data.message);
+      }
+    } catch (err) {
+      showToast(t("error_msg"), true);
+      console.error("Inventory fetch error:", err);
+    } finally {
+      setLoading("inv", false);
+    }
+  }
+</script>
