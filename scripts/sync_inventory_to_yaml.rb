@@ -44,26 +44,48 @@ CATEGORY_ALIASES = {
   'esmeralda' => 'esmeraldas', 'esmeraldas' => 'esmeraldas', 'emerald' => 'esmeraldas'
 }.freeze
 
-def fetch_json(url_str, max_redirects = 5)
+def fetch_http(url_str, max_redirects = 5)
   raise 'Demasiadas redirecciones HTTP' if max_redirects <= 0
 
   uri = URI(url_str)
   http = Net::HTTP.new(uri.host, uri.port)
   http.use_ssl = (uri.scheme == 'https')
-  http.open_timeout = 15
-  http.read_timeout = 25
+  http.open_timeout = 30
+  http.read_timeout = 90
 
   req = Net::HTTP::Get.new(uri.request_uri, { 'User-Agent' => 'Mozilla/5.0 (contabilidad-sync)' })
   res = http.request(req)
 
   case res
   when Net::HTTPSuccess
-    JSON.parse(res.body)
+    begin
+      JSON.parse(res.body)
+    rescue JSON::ParserError => e
+      preview = res.body.to_s[0..250].gsub(/\s+/, ' ')
+      raise "Error parseando JSON devuelto por Google: #{e.message}. Contenido: #{preview}"
+    end
   when Net::HTTPRedirection
     location = res['location']
-    fetch_json(location, max_redirects - 1)
+    fetch_http(location, max_redirects - 1)
   else
     raise "HTTP Error #{res.code}: #{res.message}"
+  end
+end
+
+def fetch_json_with_retries(url_str, max_retries = 3)
+  attempts = 0
+  begin
+    attempts += 1
+    fetch_http(url_str)
+  rescue Net::OpenTimeout, Net::ReadTimeout, SocketError, Errno::ECONNRESET, OpenSSL::SSL::SSLError => e
+    if attempts < max_retries
+      puts "⚠️ Intento #{attempts}/#{max_retries} falló con #{e.class}: #{e.message}. Reintentando en 6s..."
+      sleep 6
+      retry
+    else
+      puts "❌ Error persistente tras #{max_retries} intentos: #{e.class} - #{e.message}"
+      raise
+    end
   end
 end
 
@@ -74,7 +96,7 @@ end
 
 def sync_catalog!
   puts '==> Consultando inventario en Google Sheets...'
-  data = fetch_json(INVENTORY_SCRIPT_URL)
+  data = fetch_json_with_retries(INVENTORY_SCRIPT_URL)
 
   unless data && data['status'] == 'ok'
     puts "Error en respuesta de Google Sheets: #{data ? data['message'] : 'Respuesta vacía'}"

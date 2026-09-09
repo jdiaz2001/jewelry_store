@@ -16,6 +16,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
@@ -34,5 +37,8 @@ jobs:
             echo "No hay cambios pendientes en _data/."
           else
             git commit -m "chore(inventory): auto-sync _data/*.yml from Google Sheets"
-            git push
+            git push origin main || {
+              echo "::error::Error haciendo git push. Verifica que en Settings > Actions > General > Workflow permissions esté seleccionado 'Read and write permissions'."
+              exit 1
+            }
           fi
