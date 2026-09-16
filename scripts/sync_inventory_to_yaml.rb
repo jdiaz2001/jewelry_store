@@ -44,6 +44,8 @@ CATEGORY_ALIASES = {
   'esmeralda' => 'esmeraldas', 'esmeraldas' => 'esmeraldas', 'emerald' => 'esmeraldas'
 }.freeze
 
+class HttpStatusError < StandardError; end
+
 def fetch_http(url_str, max_redirects = 5)
   raise 'Demasiadas redirecciones HTTP' if max_redirects <= 0
 
@@ -68,16 +70,16 @@ def fetch_http(url_str, max_redirects = 5)
     location = res['location']
     fetch_http(location, max_redirects - 1)
   else
-    raise "HTTP Error #{res.code}: #{res.message}"
+    raise HttpStatusError, "HTTP Error #{res.code}: #{res.message}"
   end
 end
 
-def fetch_json_with_retries(url_str, max_retries = 3)
+def fetch_json_with_retries(url_str, max_retries = 4)
   attempts = 0
   begin
     attempts += 1
     fetch_http(url_str)
-  rescue Net::OpenTimeout, Net::ReadTimeout, SocketError, Errno::ECONNRESET, OpenSSL::SSL::SSLError => e
+  rescue Net::OpenTimeout, Net::ReadTimeout, SocketError, Errno::ECONNRESET, OpenSSL::SSL::SSLError, HttpStatusError => e
     if attempts < max_retries
       puts "⚠️ Intento #{attempts}/#{max_retries} falló con #{e.class}: #{e.message}. Reintentando en 6s..."
       sleep 6
